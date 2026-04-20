@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dree Studio — Producción audiovisual de calidad cinematográfica en Lambayeque, Perú. Videos institucionales, documentales y contenido para el Estado.">
+<meta name="keywords" content="productora audiovisual Chiclayo, producción video Lambayeque, documentales Perú, Dree Studio">
+<meta property="og:title" content="Dree Studio — Producción Audiovisual">
+<meta property="og:description" content="Calidad cinematográfica para el Estado y empresas del norte del Perú.">
+<title>Dree Studio — Producción Audiovisual Cinematográfica</title>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070a;
+  --white:#ede9e2;
+  --gold:#b8952a;
+  --gold-bright:#d4aa3a;
+  --gold-dim:rgba(184,149,42,0.15);
+  --gray1:#111114;
+  --gray2:#1c1c20;
+  --gray3:#2e2e33;
+  --gray4:#555560;
+  --gray5:#888896;
+  --serif:'Cormorant Garamond',serif;
+  --display:'Bebas Neue',sans-serif;
+  --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight:300;overflow-x:hidden;cursor:none}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s ease}
+#loader.done{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--display);font-size:5rem;letter-spacing:0.2em;color:transparent;-webkit-text-stroke:1px var(--gray3);animation:revealStroke 2s ease forwards}
+@keyframes revealStroke{0%{-webkit-text-stroke-color:var(--gray3)}100%{-webkit-text-stroke-color:var(--gold)}}
+.loader-bar-wrap{width:200px;height:1px;background:var(--gray3);overflow:hidden}
+.loader-bar{height:100%;background:var(--gold);width:0;animation:loadBar 2.2s ease forwards}
+@keyframes loadBar{0%{width:0}100%{width:100%}}
+.loader-pct{font-size:0.65rem;letter-spacing:0.4em;color:var(--gray4);font-family:var(--display)}
+
+/* CURSOR */
+.cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s,border-radius .3s}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(184,149,42,0.4);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width .4s,height .4s,opacity .3s}
+.cur.hover{width:4px;height:4px;background:var(--white)}
+.cur-ring.hover{width:56px;height:56px;opacity:0.2}
+.cur.click{width:20px;height:20px;background:transparent;border:1px solid var(--gold);border-radius:50%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2.5rem 5vw;mix-blend-mode:normal;transition:padding .4s,background .4s}
+nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--display);font-size:1.6rem;letter-spacing:0.2em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.3rem}
+.nav-logo .dot{color:var(--gold);font-size:2rem;line-height:0.5}
+.nav-links{display:flex;gap:3rem;list-style:none}
+.nav-links a{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gray5);text-decoration:none;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-family:var(--display);font-size:0.85rem;letter-spacing:0.15em;color:var(--gold);border:1px solid rgba(184,149,42,0.4);padding:0.6rem 1.4rem;text-decoration:none;transition:background .3s,color .3s}
+.nav-cta:hover{background:var(--gold);color:var(--bg)}
+
+/* HERO */
+.hero{height:100vh;display:grid;grid-template-rows:1fr auto;padding:0 5vw 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(184,149,42,0.05) 0%,transparent 70%)}
+.hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none}
+.hero-number{position:absolute;top:50%;left:5vw;transform:translateY(-50%);font-family:var(--display);font-size:clamp(12rem,22vw,28rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.03em}
+.hero-content{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:2rem;position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease 2.5s forwards}
+.hero-eyebrow-line{width:3rem;height:1px;background:var(--gold)}
+.hero-eyebrow span{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold)}
+.hero-h1{font-family:var(--display);font-size:clamp(4.5rem,11vw,12rem);line-height:0.88;letter-spacing:0.02em;opacity:0;animation:fadeUp 1s ease 2.7s forwards}
+.hero-h1 .line2{display:block;-webkit-text-stroke:1px rgba(237,233,226,0.2);color:transparent;padding-left:15vw}
+.hero-h1 .line3{display:block;color:var(--gold);font-size:0.45em;font-family:var(--serif);font-style:italic;letter-spacing:0.08em;-webkit-text-stroke:0;padding-left:30vw;margin-top:0.5rem}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;position:relative;z-index:2;opacity:0;animation:fadeUp 1s ease 3s forwards}
+.hero-desc{max-width:340px;font-size:0.9rem;line-height:1.85;color:var(--gray5);font-weight:200}
+.hero-scroll-wrap{display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-decoration:none}
+.hero-scroll-text{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gray4);writing-mode:vertical-rl}
+.hero-scroll-line{width:1px;height:80px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollDown 2s ease-in-out infinite}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--gray3);border-bottom:1px solid var(--gray3);padding:1rem 0;overflow:hidden;background:var(--gray1)}
+.marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;width:max-content}
+.marquee-item{font-family:var(--display);font-size:1rem;letter-spacing:0.3em;color:var(--gray4);padding:0 3rem;white-space:nowrap;display:flex;align-items:center;gap:2rem}
+.marquee-item .dot{color:var(--gold);font-size:1.5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* REEL */
+.reel-section{padding:6rem 5vw;position:relative}
+.reel-label-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.reel-tag{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:1rem}
+.reel-tag::before{content:'';display:block;width:2rem;height:1px;background:var(--gold)}
+.reel-container{position:relative;width:100%;aspect-ratio:16/9;background:var(--gray1);overflow:hidden}
+.reel-container iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.reel-border{position:absolute;inset:0;border:1px solid rgba(184,149,42,0.1);pointer-events:none;z-index:2}
+.reel-corner{position:absolute;width:20px;height:20px;border-color:var(--gold);border-style:solid;border-width:0}
+.reel-corner.tl{top:-1px;left:-1px;border-top-width:1px;border-left-width:1px}
+.reel-corner.tr{top:-1px;right:-1px;border-top-width:1px;border-right-width:1px}
+.reel-corner.bl{bottom:-1px;left:-1px;border-bottom-width:1px;border-left-width:1px}
+.reel-corner.br{bottom:-1px;right:-1px;border-bottom-width:1px;border-right-width:1px}
+
+/* SECTION SYSTEM */
+.s-header{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:2rem;border-bottom:1px solid var(--gray3);margin-bottom:4rem}
+.s-title{font-family:var(--display);font-size:clamp(3rem,6vw,7rem);letter-spacing:0.05em;line-height:1}
+.s-num{font-size:0.65rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase}
+
+/* PROJECTS */
+#trabajos{padding:6rem 5vw}
+.projects-layout{display:grid;gap:1px;background:var(--gray3)}
+
+/* Row 1: 1 big + 2 small */
+.projects-r1{display:grid;grid-template-columns:2fr 1fr;gap:1px;background:var(--gray3)}
+/* Row 2: 3 equal */
+.projects-r2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--gray3)}
+/* Row 3: 2 equal */
+.projects-r3{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray3)}
+
+.pcard{background:var(--bg);position:relative;overflow:hidden;cursor:none}
+.pcard-inner{position:relative;overflow:hidden;height:100%}
+.pcard-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .6s ease;filter:grayscale(40%) brightness(0.6)}
+.pcard:hover .pcard-img{transform:scale(1.06);filter:grayscale(0%) brightness(0.75)}
+.pcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,10,0.95) 0%,rgba(7,7,10,0.3) 50%,transparent 100%);transition:opacity .4s}
+.pcard-data{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.5rem 1.5rem;transform:translateY(8px);transition:transform .4s}
+.pcard:hover .pcard-data{transform:translateY(0)}
+.pcard-cat{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;opacity:0;transition:opacity .4s .1s}
+.pcard:hover .pcard-cat{opacity:1}
+.pcard-name{font-family:var(--display);font-size:clamp(1.1rem,2.5vw,2rem);letter-spacing:0.05em;line-height:1.1;color:var(--white)}
+.pcard-year{font-size:0.65rem;letter-spacing:0.2em;color:var(--gray5);margin-top:0.3rem}
+.pcard-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);width:56px;height:56px;border:1px solid rgba(237,233,226,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s,transform .4s,border-color .3s}
+.pcard:hover .pcard-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.pcard:hover .pcard-play{border-color:var(--gold)}
+.play-tri{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--white);margin-left:4px}
+.pcard-big{aspect-ratio:unset}
+.pcard-big .pcard-inner{min-height:520px}
+.pcard-sm .pcard-inner{min-height:260px}
+.pcard-md .pcard-inner{min-height:320px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(7,7,10,0.97)}
+.modal.on{display:flex}
+.modal-inner{width:88vw;max-width:1200px;position:relative}
+.modal-video{aspect-ratio:16/9;background:#000}
+.modal-video iframe{width:100%;height:100%;border:none}
+.modal-meta{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem}
+.modal-name{font-family:var(--display);font-size:1.8rem;letter-spacing:0.1em;color:var(--white)}
+.modal-close-btn{font-family:var(--display);font-size:1rem;letter-spacing:0.2em;color:var(--gray5);background:none;border:1px solid var(--gray3);padding:0.6rem 1.2rem;cursor:none;transition:color .3s,border-color .3s}
+.modal-close-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ABOUT */
+#nosotros{padding:6rem 5vw;display:grid;grid-template-columns:5fr 4fr;gap:8vw;align-items:center}
+.about-txt .s-header{border-color:var(--gray3)}
+.about-lead{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2.2rem);font-style:italic;line-height:1.5;color:var(--white);margin-bottom:2rem;font-weight:300}
+.about-body{font-size:0.9rem;line-height:1.95;color:var(--gray5);margin-bottom:1.5rem}
+.about-body strong{color:var(--white);font-weight:400}
+.gear-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:0}
+.gear-item{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 0;border-bottom:1px solid var(--gray2);font-size:0.8rem}
+.gear-name{color:var(--white);letter-spacing:0.05em}
+.gear-spec{color:var(--gold);font-size:0.7rem;letter-spacing:0.15em;font-family:var(--display)}
+.about-vis{position:relative}
+.about-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--gray1)}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%)}
+.about-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:10rem;color:var(--gray3);letter-spacing:0.1em}
+.about-frame{position:absolute;bottom:-1.5rem;right:-1.5rem;width:calc(100% - 2rem);height:calc(100% - 2rem);border:1px solid var(--gold-dim);pointer-events:none;z-index:-1}
+.about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray3);margin-top:2rem}
+.astat{background:var(--bg);padding:1.5rem;display:flex;flex-direction:column;gap:0.25rem}
+.astat-n{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1}
+.astat-l{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray5)}
+
+/* SERVICES */
+#servicios{padding:6rem 5vw}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray3)}
+.scard{background:var(--bg);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .4s}
+.scard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-dim),transparent);opacity:0;transition:opacity .4s}
+.scard:hover{background:var(--gray1)}
+.scard:hover::before{opacity:1}
+.scard-num{font-family:var(--display);font-size:5rem;color:var(--gray2);line-height:1;margin-bottom:1.5rem;transition:color .4s}
+.scard:hover .scard-num{color:var(--gold-dim)}
+.scard-name{font-family:var(--display);font-size:1.6rem;letter-spacing:0.05em;color:var(--white);margin-bottom:1rem;line-height:1.1}
+.scard-line{width:2rem;height:1px;background:var(--gold);margin-bottom:1.5rem;transition:width .4s}
+.scard:hover .scard-line{width:4rem}
+.scard-desc{font-size:0.85rem;line-height:1.85;color:var(--gray5)}
+.scard-arrow{position:absolute;bottom:2rem;right:2rem;font-family:var(--display);font-size:1.5rem;color:var(--gray3);transition:color .4s,transform .4s}
+.scard:hover .scard-arrow{color:var(--gold);transform:translate(4px,-4px)}
+
+/* PROCESS */
+#proceso{padding:6rem 5vw;background:var(--gray1)}
+.process-track{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:4rem}
+.process-track::before{content:'';position:absolute;top:2rem;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--gold),var(--gold),transparent)}
+.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem;padding:0 1rem}
+.pstep-circle{width:4rem;height:4rem;border:1px solid var(--gray3);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--gray1);position:relative;z-index:1;transition:border-color .3s,background .3s}
+.pstep:hover .pstep-circle{border-color:var(--gold);background:var(--gold-dim)}
+.pstep-n{font-family:var(--display);font-size:1.2rem;color:var(--gold)}
+.pstep-title{font-family:var(--display);font-size:1rem;letter-spacing:0.1em;color:var(--white)}
+.pstep-desc{font-size:0.75rem;line-height:1.7;color:var(--gray5)}
+
+/* CLIENTS / LOGOS */
+#clientes{padding:5rem 5vw;border-top:1px solid var(--gray3)}
+.clients-title{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gray4);text-align:center;margin-bottom:3rem}
+.clients-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3rem 5rem}
+.client-name{font-family:var(--display);font-size:1.1rem;letter-spacing:0.15em;color:var(--gray3);transition:color .3s}
+.client-name:hover{color:var(--white)}
+
+/* COTIZADOR */
+#cotizar{padding:6rem 5vw;background:var(--gray1)}
+.cotiz-wrap{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.cotiz-left .s-header{border-color:var(--gray3)}
+.cotiz-desc{font-size:0.9rem;line-height:1.9;color:var(--gray5);margin-bottom:2rem}
+.price-preview{background:var(--bg);border:1px solid var(--gray3);padding:2rem}
+.price-label{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.price-amount{font-family:var(--display);font-size:4rem;color:var(--white);line-height:1}
+.price-amount span{font-size:1.5rem;color:var(--gold)}
+.price-note{font-size:0.75rem;color:var(--gray5);margin-top:0.5rem;line-height:1.6}
+.price-items{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.price-item{display:flex;justify-content:space-between;font-size:0.8rem;padding:0.5rem 0;border-bottom:1px solid var(--gray2)}
+.price-item-name{color:var(--gray5)}
+.price-item-val{color:var(--white);font-weight:400}
+.cotiz-form{display:flex;flex-direction:column;gap:1.5rem}
+.cform-group{display:flex;flex-direction:column;gap:0.5rem}
+.cform-label{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold)}
+.cform-select,.cform-input{background:var(--bg);border:none;border-bottom:1px solid var(--gray3);color:var(--white);font-family:var(--body);font-size:0.9rem;font-weight:200;padding:0.75rem 0;outline:none;transition:border-color .3s;cursor:none;width:100%}
+.cform-select{padding-right:1rem;-webkit-appearance:none;appearance:none}
+.cform-select option{background:var(--bg)}
+.cform-select:focus,.cform-input:focus{border-bottom-color:var(--gold)}
+.cform-checks{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.check-item{display:flex;align-items:center;gap:0.75rem;cursor:none}
+.check-item input{width:14px;height:14px;accent-color:var(--gold);cursor:none}
+.check-item label{font-size:0.8rem;color:var(--gray5);cursor:none}
+.cotiz-btn{display:flex;align-items:center;justify-content:space-between;background:var(--gold);color:var(--bg);font-family:var(--display);font-size:1.1rem;letter-spacing:0.15em;padding:1.2rem 2rem;border:none;cursor:none;transition:background .3s;margin-top:0.5rem;width:100%}
+.cotiz-btn:hover{background:var(--gold-bright)}
+.cotiz-btn .arr{font-size:1.4rem;transition:transform .3s}
+.cotiz-btn:hover .arr{transform:translateX(6px)}
+
+/* CONTACTO */
+#contacto{padding:6rem 5vw;position:relative;overflow:hidden}
+.contact-bg-text{position:absolute;bottom:-3rem;right:5vw;font-family:var(--display);font-size:clamp(8rem,18vw,22rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.02);pointer-events:none;white-space:nowrap;line-height:1}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;position:relative;z-index:2}
+.contact-big{font-family:var(--display);font-size:clamp(3rem,7vw,8rem);line-height:0.9;letter-spacing:0.02em}
+.contact-big .accent{color:var(--gold);display:block}
+.contact-tagline{margin-top:2.5rem;font-size:0.9rem;line-height:1.9;color:var(--gray5);max-width:380px}
+.contact-links{margin-top:3rem;display:flex;flex-direction:column;gap:1rem}
+.contact-link-item{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--gray3);text-decoration:none;transition:border-color .3s}
+.contact-link-item:hover{border-color:var(--gold)}
+.cli-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gray4)}
+.cli-val{font-family:var(--display);font-size:1.1rem;letter-spacing:0.1em;color:var(--white);transition:color .3s}
+.contact-link-item:hover .cli-val{color:var(--gold)}
+.contact-form-side{padding-top:4rem}
+.cf-group{margin-bottom:1.5rem}
+.cf-label{display:block;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+.cf-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--gray3);color:var(--white);font-family:var(--body);font-size:0.95rem;font-weight:200;padding:0.75rem 0;outline:none;transition:border-color .3s;cursor:none}
+.cf-input:focus{border-bottom-color:var(--gold)}
+.cf-input::placeholder{color:var(--gray3)}
+textarea.cf-input{resize:none;min-height:90px}
+.cf-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:1px solid var(--gray3);color:var(--white);font-family:var(--display);font-size:1.1rem;letter-spacing:0.15em;padding:1.2rem 1.5rem;cursor:none;transition:border-color .3s,color .3s;margin-top:1rem}
+.cf-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.ft-logo{font-family:var(--display);font-size:1.4rem;letter-spacing:0.2em;color:var(--gray4)}
+.ft-logo span{color:var(--gold)}
+.ft-copy{font-size:0.65rem;letter-spacing:0.1em;color:var(--gray4);text-align:center}
+.ft-links{display:flex;gap:2rem;justify-content:flex-end}
+.ft-links a{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray4);text-decoration:none;transition:color .3s}
+.ft-links a:hover{color:var(--gold)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1.5rem 5vw}
+  .nav-links,.nav-cta{display:none}
+  .hero{padding:0 5vw 3rem}
+  .hero-h1 .line2{padding-left:0}
+  .hero-h1 .line3{padding-left:0}
+  .projects-r1,.projects-r2,.projects-r3{grid-template-columns:1fr}
+  .pcard-big .pcard-inner,.pcard-sm .pcard-inner,.pcard-md .pcard-inner{min-height:240px}
+  #nosotros{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .process-track{grid-template-columns:1fr 1fr}
+  .process-track::before{display:none}
+  .cotiz-wrap{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;text-align:center}
+  .ft-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">DREE</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">DREE<span class="dot">·</span>STUDIO</a>
+  <ul class="nav-links">
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#cotizar">Cotizar</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Trabajemos juntos</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-number">DS</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Lima · Perú</span>
+    </div>
+    <h1 class="hero-h1">
+      DREE
+      <span class="line2">STUDIO</span>
+      <span class="line3">producción cinematográfica</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Calidad cinematográfica de Lima, al alcance de empresas en todo el Perú. Producimos para el Estado, marcas y organizaciones que merecen más sin pagar de más.</p>
+    <a href="#trabajos" class="hero-scroll-wrap">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-text">Scroll</span>
+    </a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item">Cada historia merece ser contada bien <span class="dot">·</span></div>
+    <div class="marquee-item">Imágenes que perduran <span class="dot">·</span></div>
+    <div class="marquee-item">Del concepto a la pantalla <span class="dot">·</span></div>
+    <div class="marquee-item">Norte con visión de mundo <span class="dot">·</span></div>
+    <div class="marquee-item">Lo ordinario filmado de forma extraordinaria <span class="dot">·</span></div>
+    <div class="marquee-item">Producción sin concesiones <span class="dot">·</span></div>
+    <div class="marquee-item">Cada historia merece ser contada bien <span class="dot">·</span></div>
+    <div class="marquee-item">Imágenes que perduran <span class="dot">·</span></div>
+    <div class="marquee-item">Del concepto a la pantalla <span class="dot">·</span></div>
+    <div class="marquee-item">Norte con visión de mundo <span class="dot">·</span></div>
+    <div class="marquee-item">Lo ordinario filmado de forma extraordinaria <span class="dot">·</span></div>
+    <div class="marquee-item">Producción sin concesiones <span class="dot">·</span></div>
+  </div>
+</div>
+
+<!-- SHOWREEL -->
+<section class="reel-section reveal">
+  <div class="reel-label-wrap">
+    <div class="reel-tag">Showreel 2025</div>
+    <div class="reel-tag">Dree Studio · Producción Audiovisual</div>
+  </div>
+  <div class="reel-container">
+    <!-- REEMPLAZA con tu YouTube/Vimeo ID -->
+    <div id="reelPlaceholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;background:var(--gray1)">
+      <div style="font-family:var(--display);font-size:clamp(2rem,5vw,5rem);letter-spacing:0.2em;color:var(--gray3)">SHOWREEL</div>
+      <div style="width:60px;height:1px;background:var(--gold)"></div>
+      <div style="font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gray4)">Próximamente · 2025</div>
+    </div>
+    <div class="reel-border">
+      <div class="reel-corner tl"></div>
+      <div class="reel-corner tr"></div>
+      <div class="reel-corner bl"></div>
+      <div class="reel-corner br"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABAJOS -->
+<section id="trabajos">
+  <div class="s-header reveal">
+    <h2 class="s-title">Trabajos</h2>
+    <span class="s-num">01 · Proyectos seleccionados</span>
+  </div>
+
+  <!-- ROW 1 -->
+  <div class="projects-r1 reveal">
+    <div class="pcard pcard-big" onclick="openModal('5T2VaoIS2fE','Promo Lambayeque','Documental · 2025')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://img.youtube.com/vi/5T2VaoIS2fE/maxresdefault.jpg" alt="Promo Lambayeque">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Documental · Estado peruano</div>
+          <div class="pcard-name">Promo Lambayeque</div>
+          <div class="pcard-year">2025</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--gray3)">
+      <div class="pcard pcard-sm" onclick="openModal('TU_VIDEO_ID_2','La Ruta del Papa','Cultural · 2025')">
+        <div class="pcard-inner">
+          <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/0c3d713a-7383-4340-bdd7-2345e1409f05_rwc_125x0x2764x1557x32.png?h=f30cbf1cd21ada857a94d6c27b4ab5b7" alt="La Ruta del Papa">
+          <div class="pcard-overlay"></div>
+          <div class="pcard-play"><div class="play-tri"></div></div>
+          <div class="pcard-data">
+            <div class="pcard-cat">Cultural · Serie</div>
+            <div class="pcard-name">La Ruta del Papa</div>
+            <div class="pcard-year">2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="pcard pcard-sm" onclick="openModal('TU_VIDEO_ID_3','GERCETUR Lambayeque','Turismo · 2025')">
+        <div class="pcard-inner">
+          <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/75d536fa-9702-42d6-beef-5dafcf3a7ca0_rwc_340x0x2338x1318x32.png?h=a05e675e5c0976c80377be3e3c6618a2" alt="GERCETUR">
+          <div class="pcard-overlay"></div>
+          <div class="pcard-play"><div class="play-tri"></div></div>
+          <div class="pcard-data">
+            <div class="pcard-cat">Turismo · Estado</div>
+            <div class="pcard-name">GERCETUR Lambayeque</div>
+            <div class="pcard-year">2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="projects-r2 reveal" style="margin-top:1px">
+    <div class="pcard pcard-md" onclick="openModal('TU_VIDEO_ID_4','Huaca Rajada','Arqueología · 2025')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/027bb5b6-9699-4a22-97c0-69f1722e716b_rwc_0x0x3832x2160x32.jpg?h=b789b031a0bffcddda5b5d51368671f6" alt="Huaca Rajada">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Arqueología · Drone</div>
+          <div class="pcard-name">Huaca Rajada</div>
+          <div class="pcard-year">2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="pcard pcard-md" onclick="openModal('TU_VIDEO_ID_5','Pirámides de Túcume','Patrimonio · 2025')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/6720ed24-6ffa-4157-b832-89e4239d8a93_rwc_0x0x3832x2160x32.jpg?h=9820bf742015227d2119b4cefa0d4387" alt="Túcume">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Patrimonio · Drone</div>
+          <div class="pcard-name">Pirámides de Túcume</div>
+          <div class="pcard-year">2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="pcard pcard-md" onclick="openModal('TU_VIDEO_ID_6','Mercedes-Benz','Corporativo · 2024')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/414e2a3d-4b19-4862-a18e-fde3950e3878_rwc_0x818x5000x2818x32.jpg?h=7259571c176ae065acad1e6b4d6f3a02" alt="Mercedes-Benz">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Corporativo · Marca</div>
+          <div class="pcard-name">Mercedes-Benz</div>
+          <div class="pcard-year">2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3 -->
+  <div class="projects-r3 reveal" style="margin-top:1px">
+    <div class="pcard pcard-md" onclick="openModal('TU_VIDEO_ID_7','CCLAM × BCP','Corporativo · 2024')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/b51ca765-4152-4f1d-89d7-30584faacb7a_rwc_30x300x750x423x32.png?h=01e27bde4b02b20985a877c53f7cdfea" alt="CCLAM BCP">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Banca · Evento corporativo</div>
+          <div class="pcard-name">CCLAM × BCP</div>
+          <div class="pcard-year">2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="pcard pcard-md" onclick="openModal('TU_VIDEO_ID_8','CEO Grupo San Antonio','Entrevista · 2024')">
+      <div class="pcard-inner">
+        <img class="pcard-img" src="https://cdn.myportfolio.com/78879c29-2730-43bf-9ce1-9904f0a65696/f58d7354-05fd-4b97-af1e-f48ec7774243_rwc_38x330x654x368x32.png?h=8792626c6e85b224d183bfd30f1df34e" alt="CEO San Antonio">
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">Entrevista · Liderazgo</div>
+          <div class="pcard-name">CEO Grupo San Antonio</div>
+          <div class="pcard-year">2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes">
+  <div class="clients-title">Han confiado en nosotros</div>
+  <div class="clients-logos">
+    <div class="client-name">GERCETUR</div>
+    <div class="client-name">BCP</div>
+    <div class="client-name">MERCEDES-BENZ</div>
+    <div class="client-name">CCLAM</div>
+    <div class="client-name">GOBIERNO REGIONAL LAMBAYEQUE</div>
+    <div class="client-name">GRUPO SAN ANTONIO</div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="about-txt">
+    <div class="s-header reveal">
+      <h2 class="s-title">Nosotros</h2>
+      <span class="s-num">02 · Dree Studio</span>
+    </div>
+    <p class="about-lead reveal">"No filmamos eventos. Construimos imágenes que perduran."</p>
+    <p class="about-body reveal">
+      <strong>Dree Studio</strong> es una productora audiovisual radicada en Lima, con alma del norte. Liderada por <strong>Andree Romero</strong>, especializada en proyectos de calidad cinematográfica para el Estado peruano, marcas y empresas a nivel nacional.
+    </p>
+    <p class="about-body reveal">
+      Nuestro trabajo incluye documentales culturales, videos institucionales y piezas de alta producción para marcas que no quieren parecerse a nadie más. Porque en un mundo saturado de contenido, lo que se recuerda es lo que se siente.
+    </p>
+
+  </div>
+  <div class="about-vis reveal">
+    <div class="about-img-wrap">
+      <!-- Reemplaza con tu foto: <img src="tu-foto.jpg" alt="Andree Romero"> -->
+      <div class="about-img-placeholder">AR</div>
+    </div>
+    <div class="about-frame"></div>
+    <div class="about-stat-row">
+      <div class="astat"><div class="astat-n">38+</div><div class="astat-l">Proyectos entregados</div></div>
+      <div class="astat"><div class="astat-n">+3</div><div class="astat-l">Años de experiencia</div></div>
+      <div class="astat"><div class="astat-n">4K</div><div class="astat-l">Resolución cine</div></div>
+      <div class="astat"><div class="astat-n">100%</div><div class="astat-l">Proyectos entregados a tiempo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="s-header reveal">
+    <h2 class="s-title">Servicios</h2>
+    <span class="s-num">03 · Qué hacemos</span>
+  </div>
+  <div class="services-grid">
+    <div class="scard reveal reveal-delay-1">
+      <div class="scard-num">01</div>
+      <div class="scard-name">Videos Institucionales</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Presentamos tu empresa con la dignidad que merece. Calidad cinematográfica para marcas que quieren destacar en un mercado saturado.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+    <div class="scard reveal reveal-delay-2">
+      <div class="scard-num">02</div>
+      <div class="scard-name">Documentales Culturales</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Narramos historias complejas con profundidad visual y narrativa. Proyectos para el Estado, ONGs y organizaciones culturales del norte del Perú.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+    <div class="scard reveal reveal-delay-3">
+      <div class="scard-num">03</div>
+      <div class="scard-name">Contenido para Redes</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Reels y piezas cortas con estética de cine. Tu marca en Instagram y LinkedIn con la calidad visual que te diferencia de la competencia.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+    <div class="scard reveal reveal-delay-1">
+      <div class="scard-num">04</div>
+      <div class="scard-name">Aerial & Drone</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Perspectivas únicas desde el aire. Obras, propiedades, eventos y paisajes del Perú capturados con resolución cinematográfica y movimientos imposibles.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+    <div class="scard reveal reveal-delay-2">
+      <div class="scard-num">05</div>
+      <div class="scard-name">Eventos Corporativos</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Cobertura profesional de lanzamientos, conferencias y ceremonias. Cada momento preservado con calidad de pantalla grande.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+    <div class="scard reveal reveal-delay-3">
+      <div class="scard-num">06</div>
+      <div class="scard-name">Licitaciones del Estado</div>
+      <div class="scard-line"></div>
+      <p class="scard-desc">Experiencia probada en proyectos públicos de alto presupuesto. Producción audiovisual oficial para entidades del Estado peruano a nivel nacional.</p>
+      <div class="scard-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="s-header reveal">
+    <h2 class="s-title">Proceso</h2>
+    <span class="s-num">04 · Cómo trabajamos</span>
+  </div>
+  <div class="process-track">
+    <div class="pstep reveal reveal-delay-1">
+      <div class="pstep-circle"><span class="pstep-n">01</span></div>
+      <div class="pstep-title">Briefing</div>
+      <p class="pstep-desc">Entendemos tu proyecto, tu audiencia y los objetivos de la pieza audiovisual.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-2">
+      <div class="pstep-circle"><span class="pstep-n">02</span></div>
+      <div class="pstep-title">Preproducción</div>
+      <p class="pstep-desc">Guión, storyboard, plan de rodaje y coordinación de locaciones.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-3">
+      <div class="pstep-circle"><span class="pstep-n">03</span></div>
+      <div class="pstep-title">Producción</div>
+      <p class="pstep-desc">Grabación con equipo de línea cine. Dirección cinematográfica en campo.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-1">
+      <div class="pstep-circle"><span class="pstep-n">04</span></div>
+      <div class="pstep-title">Postproducción</div>
+      <p class="pstep-desc">Edición, color grading cinematográfico, motion graphics y audio.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-2">
+      <div class="pstep-circle"><span class="pstep-n">05</span></div>
+      <div class="pstep-title">Entrega</div>
+      <p class="pstep-desc">Formatos optimizados para cada plataforma. Revisiones incluidas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COTIZADOR -->
+<section id="cotizar">
+  <div class="cotiz-wrap">
+    <div class="cotiz-left">
+      <div class="s-header reveal">
+        <h2 class="s-title">Cotiza</h2>
+        <span class="s-num">05 · Tu proyecto</span>
+      </div>
+      <p class="cotiz-desc reveal">Cuéntanos qué necesitas y te damos una estimación al instante. Sin compromisos, sin esperas.</p>
+      <div class="price-preview reveal" id="priceBox">
+        <div class="price-label">Estimación del proyecto</div>
+        <div class="price-amount"><span>S/.</span> <span id="priceNum">0</span></div>
+        <p class="price-note" id="priceNote">Selecciona el tipo de proyecto para ver una estimación.</p>
+        <div class="price-items" id="priceItems"></div>
+      </div>
+    </div>
+    <div class="cotiz-form reveal">
+      <div class="cform-group">
+        <label class="cform-label">Tipo de proyecto</label>
+        <select class="cform-select" id="tipoProyecto" onchange="calcPrice()">
+          <option value="">Selecciona una opción</option>
+          <option value="reel">Reel / Video corto (30-60s)</option>
+          <option value="institucional">Video institucional (2-4 min)</option>
+          <option value="documental">Documental / Reportaje</option>
+          <option value="evento">Cobertura de evento</option>
+          <option value="drone">Solo aerial / drone</option>
+          <option value="estado">Proyecto para el Estado (licitación)</option>
+        </select>
+      </div>
+      <div class="cform-group">
+        <label class="cform-label">Duración estimada</label>
+        <select class="cform-select" id="duracion" onchange="calcPrice()">
+          <option value="1">Menos de 1 minuto</option>
+          <option value="3">1 a 3 minutos</option>
+          <option value="5">3 a 5 minutos</option>
+          <option value="10">5 a 10 minutos</option>
+          <option value="20">Más de 10 minutos</option>
+        </select>
+      </div>
+      <div class="cform-group">
+        <label class="cform-label">Servicios adicionales</label>
+        <div class="cform-checks">
+          <label class="check-item"><input type="checkbox" value="drone" onchange="calcPrice()"> Drone / Aerial</label>
+          <label class="check-item"><input type="checkbox" value="motion" onchange="calcPrice()"> Motion graphics</label>
+          <label class="check-item"><input type="checkbox" value="guion" onchange="calcPrice()"> Guión y dirección</label>
+          <label class="check-item"><input type="checkbox" value="audio" onchange="calcPrice()"> Música original</label>
+          <label class="check-item"><input type="checkbox" value="locacion" onchange="calcPrice()"> Locaciones múltiples</label>
+          <label class="check-item"><input type="checkbox" value="urgente" onchange="calcPrice()"> Entrega urgente</label>
+        </div>
+      </div>
+
+      <form id="cotizForm" action="https://formspree.io/f/xyklpner" method="POST" onsubmit="handleCotizSubmit(event)" style="margin-top:0">
+        <input type="hidden" name="tipo_proyecto" id="cotizTipoHidden">
+        <input type="hidden" name="estimacion" id="cotizPrecioHidden">
+        <input type="hidden" name="_subject" value="Nueva cotización desde dreestudio.pe">
+        <div class="cform-group">
+          <label class="cform-label">Tu nombre</label>
+          <input class="cform-input" type="text" name="nombre" id="cotizNombre" placeholder="Andree Romero" required>
+        </div>
+        <div class="cform-group">
+          <label class="cform-label">Empresa o institución</label>
+          <input class="cform-input" type="text" name="empresa" id="cotizEmpresa" placeholder="Tu empresa">
+        </div>
+        <div class="cform-group">
+          <label class="cform-label">Correo electrónico</label>
+          <input class="cform-input" type="email" name="email" id="cotizEmail" placeholder="tu@empresa.com" required>
+        </div>
+        <button type="submit" class="cotiz-btn" id="cotizSubmitBtn">
+          Solicitar propuesta formal <span class="arr">→</span>
+        </button>
+        <div id="cotizSuccess" style="display:none;margin-top:1rem;font-size:0.8rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase">
+          ✓ Solicitud enviada — te enviamos la propuesta pronto
+        </div>
+        <div id="cotizError" style="display:none;margin-top:1rem;font-size:0.8rem;letter-spacing:0.15em;color:#c0392b;text-transform:uppercase">
+          ✗ Algo salió mal — intenta de nuevo
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-bg-text">DREE</div>
+  <div class="contact-grid">
+    <div>
+      <div class="s-header reveal">
+        <h2 class="s-title">Contacto</h2>
+        <span class="s-num">06 · Hablemos</span>
+      </div>
+      <div class="contact-big reveal">
+        HAGAMOS<br>ALGO
+        <span class="accent">INCREÍBLE</span>
+      </div>
+      <p class="contact-tagline reveal">Trabajamos con empresas, marcas y entidades en Lima y todo el Perú. Raíces del norte, visión nacional.</p>
+      <div class="contact-links reveal">
+
+        <a class="contact-link-item" href="mailto:hola@dreestudio.pe">
+          <span class="cli-label">Email</span>
+          <span class="cli-val">hola@dreestudio.pe →</span>
+        </a>
+
+        <a class="contact-link-item" href="#">
+          <span class="cli-label">Ubicación</span>
+          <span class="cli-val">Lima, Perú</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-side reveal">
+      <div class="cf-group">
+        <label class="cf-label">Nombre</label>
+        <input class="cf-input" id="cfNombre" type="text" placeholder="Tu nombre completo">
+      </div>
+      <div class="cf-group">
+        <label class="cf-label">Empresa</label>
+        <input class="cf-input" id="cfEmpresa" type="text" placeholder="Nombre de tu empresa">
+      </div>
+      <div class="cf-group">
+        <label class="cf-label">Correo electrónico</label>
+        <input class="cf-input" id="cfEmail" type="email" placeholder="tu@empresa.com">
+      </div>
+      <div class="cf-group">
+        <label class="cf-label">Cuéntanos tu proyecto</label>
+        <textarea class="cf-input" id="cfMsg" placeholder="¿Qué tipo de video necesitas? ¿Cuál es tu objetivo?"></textarea>
+      </div>
+      <button class="cf-btn" onclick="enviarContacto()">
+        Enviar mensaje <span>→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">DREE<span>·</span>STUDIO</div>
+  <div class="ft-copy">© 2025 Dree Studio S.A.C. · Lima, Perú</div>
+  <div class="ft-links">
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="https://dreerom.myportfolio.com/" target="_blank">Portfolio</a>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="modal-inner">
+    <div class="modal-video">
+      <iframe id="modalFrame" src="" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div class="modal-meta">
+      <div class="modal-name" id="modalName"></div>
+      <button class="modal-close-btn" onclick="closeModal()">CERRAR ✕</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// LOADER
+let pct = 0;
+const pctEl = document.getElementById('loaderPct');
+const loaderInterval = setInterval(() => {
+  pct += Math.random() * 15;
+  if(pct >= 100){ pct = 100; clearInterval(loaderInterval); }
+  pctEl.textContent = Math.floor(pct) + '%';
+  if(pct === 100) setTimeout(() => document.getElementById('loader').classList.add('done'), 300);
+}, 120);
+
+// CURSOR
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+document.addEventListener('mousedown', () => cur.classList.add('click'));
+document.addEventListener('mouseup', () => cur.classList.remove('click'));
+document.querySelectorAll('a,button,.pcard,.scard').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.classList.add('hover'); curRing.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); curRing.classList.remove('hover'); });
+});
+(function animCursor(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  curRing.style.left=rx+'px'; curRing.style.top=ry+'px';
+  requestAnimationFrame(animCursor);
+})();
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// SCROLL REVEAL
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// MODAL
+function openModal(id, name, meta) {
+  const base = id.length === 11
+    ? 'https://www.youtube.com/embed/'
+    : 'https://player.vimeo.com/video/';
+  const frame = document.getElementById('modalFrame');
+  frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  frame.src = base + id + '?autoplay=1&rel=0&origin=' + window.location.origin;
+  document.getElementById('modalName').textContent = name + ' · ' + meta;
+  document.getElementById('videoModal').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('videoModal').classList.remove('on');
+  document.getElementById('modalFrame').src = '';
+  document.body.style.overflow = '';
+}
+document.getElementById('videoModal').addEventListener('click', e => { if(e.target===document.getElementById('videoModal')) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// COTIZADOR
+const precios = {
+  reel: { base: 1200, label: 'Reel / Video corto' },
+  institucional: { base: 3000, label: 'Video institucional' },
+  documental: { base: 8000, label: 'Documental / Reportaje' },
+  evento: { base: 2000, label: 'Cobertura de evento' },
+  drone: { base: 1000, label: 'Aerial / Drone' },
+  estado: { base: 18000, label: 'Proyecto Estado (licitación)' }
+};
+const extras = {
+  drone: { precio: 700, label: 'Drone / Aerial' },
+  motion: { precio: 500, label: 'Motion graphics' },
+  guion: { precio: 400, label: 'Guión y dirección' },
+  audio: { precio: 350, label: 'Música original' },
+  locacion: { precio: 500, label: 'Locaciones múltiples' },
+  urgente: { precio: 0.3, label: 'Entrega urgente (+30%)' }
+};
+const durMult = { '1':1, '3':1.2, '5':1.5, '10':1.8, '20':2.5 };
+
+function calcPrice() {
+  const tipo = document.getElementById('tipoProyecto').value;
+  const dur = document.getElementById('duracion').value;
+  const checks = [...document.querySelectorAll('.cform-checks input:checked')];
+  if(!tipo){ document.getElementById('priceNum').textContent='0'; document.getElementById('priceItems').innerHTML=''; document.getElementById('priceNote').textContent='Selecciona el tipo de proyecto para ver una estimación.'; return; }
+  
+  const base = precios[tipo].base;
+  const mult = durMult[dur] || 1;
+  let total = base * mult;
+  let items = `<div class="price-item"><span class="price-item-name">${precios[tipo].label}</span><span class="price-item-val">S/. ${Math.round(base*mult).toLocaleString()}</span></div>`;
+  
+  let tieneUrgente = false;
+  checks.forEach(ch => {
+    const ex = extras[ch.value];
+    if(ch.value === 'urgente'){ tieneUrgente = true; return; }
+    total += ex.precio;
+    items += `<div class="price-item"><span class="price-item-name">${ex.label}</span><span class="price-item-val">S/. ${ex.precio.toLocaleString()}</span></div>`;
+  });
+  if(tieneUrgente){ const urg = Math.round(total*0.3); total+=urg; items+=`<div class="price-item"><span class="price-item-name">Entrega urgente (+30%)</span><span class="price-item-val">S/. ${urg.toLocaleString()}</span></div>`; }
+  
+  document.getElementById('priceNum').textContent = Math.round(total).toLocaleString();
+  document.getElementById('priceItems').innerHTML = items;
+  document.getElementById('priceNote').textContent = 'Estimación referencial. La propuesta formal puede variar según el alcance final.';
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cfSubmitBtn');
+  const ok = document.getElementById('cfSuccess');
+  const err = document.getElementById('cfError');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xyklpner', {
+      method: 'POST',
+      body: new FormData(e.target),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(res.ok){ ok.style.display='block'; e.target.reset(); }
+    else { err.style.display='block'; }
+  } catch(ex){ err.style.display='block'; }
+  btn.textContent = 'Enviar mensaje →';
+  btn.disabled = false;
+}
+
+async function handleCotizSubmit(e) {
+  e.preventDefault();
+  const tipo = document.getElementById('tipoProyecto').options[document.getElementById('tipoProyecto').selectedIndex]?.text || 'No especificado';
+  const precio = document.getElementById('priceNum').textContent;
+  document.getElementById('cotizTipoHidden').value = tipo;
+  document.getElementById('cotizPrecioHidden').value = 'S/. ' + precio;
+  const btn = document.getElementById('cotizSubmitBtn');
+  const ok = document.getElementById('cotizSuccess');
+  const err = document.getElementById('cotizError');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xyklpner', {
+      method: 'POST',
+      body: new FormData(e.target),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(res.ok){ ok.style.display='block'; e.target.reset(); calcPrice(); }
+    else { err.style.display='block'; }
+  } catch(ex){ err.style.display='block'; }
+  btn.textContent = 'Solicitar propuesta formal →';
+  btn.disabled = false;
+}
+</script>
+</body>
+</html>
