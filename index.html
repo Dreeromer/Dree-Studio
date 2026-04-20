@@ -361,13 +361,13 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 <!-- SHOWREEL -->
 <section class="reel-section reveal">
   <div class="reel-label-wrap">
-    <div class="reel-tag">Marca Lambayeque · 2025</div>
-    <div class="reel-tag">Producción para el Estado Peruano</div>
+    <div class="reel-tag">Showreel 2025</div>
+    <div class="reel-tag">Dree Studio · Producción Audiovisual</div>
   </div>
   <div class="reel-container">
     <!-- REEMPLAZA con tu YouTube/Vimeo ID -->
     <iframe id="mainReel"
-      src="https://www.youtube.com/embed/rgp1YBcdvVU?controls=1&modestbranding=1&rel=0&color=white"
+      src="https://www.youtube.com/embed/5T2VaoIS2fE?controls=1&modestbranding=1&rel=0&color=white&vq=hd2160"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
       referrerpolicy="strict-origin-when-cross-origin">
@@ -411,6 +411,18 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
           <div class="pcard-data">
             <div class="pcard-cat">Cultural · Serie</div>
             <div class="pcard-name">La Ruta del Papa</div>
+            <div class="pcard-year">2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="pcard pcard-sm" onclick="openModal('rgp1YBcdvVU','Marca Lambayeque','Turismo · 2025')">
+        <div class="pcard-inner">
+          <img class="pcard-img" src="https://img.youtube.com/vi/rgp1YBcdvVU/maxresdefault.jpg" alt="Marca Lambayeque">
+          <div class="pcard-overlay"></div>
+          <div class="pcard-play"><div class="play-tri"></div></div>
+          <div class="pcard-data">
+            <div class="pcard-cat">Turismo · Estado</div>
+            <div class="pcard-name">Marca Lambayeque</div>
             <div class="pcard-year">2025</div>
           </div>
         </div>
@@ -460,7 +472,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   </div>
 
   <!-- ROW 3 -->
-  <div class="projects-r3 reveal" style="margin-top:1px">
+  <div class="projects-r3 reveal" style="margin-top:1px;grid-template-columns:1fr;">
 
     <div class="pcard pcard-md" onclick="openModal('b-ZuhIQLOVA','CEO Grupo San Antonio','Entrevista · 2024')">
       <div class="pcard-inner">
@@ -812,7 +824,7 @@ function openModal(id, name, meta) {
     : 'https://player.vimeo.com/video/';
   const frame = document.getElementById('modalFrame');
   frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-  frame.src = base + id + '?autoplay=1&rel=0&origin=' + window.location.origin;
+  frame.src = base + id + '?autoplay=1&rel=0&vq=hd2160&origin=' + window.location.origin;
   document.getElementById('modalName').textContent = name + ' · ' + meta;
   document.getElementById('videoModal').classList.add('on');
   document.body.style.overflow = 'hidden';
