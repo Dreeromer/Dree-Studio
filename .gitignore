@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Dependencies (por si luego)
+node_modules/
+
+# OS
+Thumbs.db

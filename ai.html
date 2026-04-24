@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Primary -->
+<title>Dree AI — UGC Cinematográfico con Inteligencia Artificial | Dree Studio</title>
+<meta name="description" content="Dree AI es la nueva vertical de Dree Studio: UGC generado con inteligencia artificial. Avatares hiperrealistas promocionando tu producto en reels cinematográficos. Suscripción mensual.">
+<meta name="keywords" content="UGC con IA, avatares IA, reels automatizados, contenido generado por IA, UGC Perú, suscripción contenido, avatares hiperrealistas, Dree AI, Dree Studio AI, videos con inteligencia artificial, UGC cinematográfico, marketing automatizado con IA">
+<meta name="author" content="Dree Studio — Dree AI">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Spanish">
+<link rel="canonical" href="https://dree.studio/ai">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dree.studio/ai">
+<meta property="og:title" content="Dree AI — UGC Cinematográfico con Inteligencia Artificial">
+<meta property="og:description" content="La próxima era del contenido audiovisual. Avatares hiperrealistas con calidad Dree Studio, escala que solo la IA puede dar.">
+<meta property="og:image" content="andree.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Dree AI">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dree AI — UGC con Inteligencia Artificial">
+<meta name="twitter:description" content="UGC cinematográfico generado con IA. La próxima era del contenido audiovisual.">
+<meta name="twitter:image" content="andree.jpg">
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dree AI",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Marketing & Content Generation",
+  "operatingSystem": "Web",
+  "description": "Plataforma SaaS de UGC con inteligencia artificial. Avatares hiperrealistas que promocionan productos de marca en reels cinematográficos, mediante suscripción mensual.",
+  "url": "https://dree.studio/ai",
+  "image": "andree.jpg",
+  "provider": {
+    "@type": "Organization",
+    "name": "Dree Studio",
+    "url": "https://dree.studio/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "UGC generado con IA",
+      "serviceType": "User Generated Content con avatares de IA",
+      "description": "Producción automatizada de reels y videos cortos protagonizados por avatares hiperrealistas que promocionan productos de marca con calidad cinematográfica.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dree Studio"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Perú"
+      }
+    }
+  },
+  "sameAs": [
+    "https://dree.studio/"
+  ]
+}
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070a;
+  --white:#ede9e2;
+  --gold:#b8952a;
+  --gold-bright:#d4aa3a;
+  --gold-dim:rgba(184,149,42,0.15);
+  --gray1:#111114;
+  --gray2:#1c1c20;
+  --gray3:#2e2e33;
+  --gray4:#555560;
+  --gray5:#888896;
+  --serif:'Cormorant Garamond',serif;
+  --display:'Bebas Neue',sans-serif;
+  --body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight:300;overflow-x:hidden;cursor:none}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s ease}
+#loader.done{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--display);font-size:5rem;letter-spacing:0.2em;color:transparent;-webkit-text-stroke:1px var(--gray3);animation:revealStroke 2s ease forwards}
+@keyframes revealStroke{0%{-webkit-text-stroke-color:var(--gray3)}100%{-webkit-text-stroke-color:var(--gold)}}
+.loader-bar-wrap{width:200px;height:1px;background:var(--gray3);overflow:hidden}
+.loader-bar{height:100%;background:var(--gold);width:0;animation:loadBar 2.2s ease forwards}
+@keyframes loadBar{0%{width:0}100%{width:100%}}
+.loader-pct{font-size:0.65rem;letter-spacing:0.4em;color:var(--gray4);font-family:var(--display)}
+
+/* CURSOR */
+.cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s,border-radius .3s}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(184,149,42,0.4);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width .4s,height .4s,opacity .3s}
+.cur.hover{width:4px;height:4px;background:var(--white)}
+.cur-ring.hover{width:56px;height:56px;opacity:0.2}
+.cur.click{width:20px;height:20px;background:transparent;border:1px solid var(--gold);border-radius:50%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2.5rem 5vw;mix-blend-mode:normal;transition:padding .4s,background .4s}
+nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--display);font-size:1.6rem;letter-spacing:0.2em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.3rem}
+.nav-logo .dot{color:var(--gold);font-size:2rem;line-height:0.5}
+.nav-links{display:flex;gap:3rem;list-style:none}
+.nav-links a{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gray5);text-decoration:none;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-family:var(--display);font-size:0.85rem;letter-spacing:0.15em;color:var(--gold);border:1px solid rgba(184,149,42,0.4);padding:0.6rem 1.4rem;text-decoration:none;transition:background .3s,color .3s}
+.nav-cta:hover{background:var(--gold);color:var(--bg)}
+
+/* HERO */
+.hero{height:100vh;display:grid;grid-template-rows:1fr auto;padding:0 5vw 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(184,149,42,0.05) 0%,transparent 70%)}
+.hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none}
+.hero-number{position:absolute;top:50%;left:5vw;transform:translateY(-50%);font-family:var(--display);font-size:clamp(12rem,22vw,28rem);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.03em}
+.hero-content{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:2rem;position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease 2.5s forwards}
+.hero-eyebrow-line{width:3rem;height:1px;background:var(--gold)}
+.hero-eyebrow span{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold)}
+.hero-h1{font-family:var(--display);font-size:clamp(4.5rem,11vw,12rem);line-height:0.88;letter-spacing:0.02em;opacity:0;animation:fadeUp 1s ease 2.7s forwards}
+.hero-h1 .line2{display:block;-webkit-text-stroke:1px rgba(237,233,226,0.2);color:transparent;padding-left:15vw}
+.hero-h1 .line3{display:block;color:var(--gold);font-size:0.45em;font-family:var(--serif);font-style:italic;letter-spacing:0.08em;-webkit-text-stroke:0;padding-left:30vw;margin-top:0.5rem}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;position:relative;z-index:2;opacity:0;animation:fadeUp 1s ease 3s forwards}
+.hero-desc{max-width:340px;font-size:0.9rem;line-height:1.85;color:var(--gray5);font-weight:200}
+.hero-scroll-wrap{display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-decoration:none}
+.hero-scroll-text{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gray4);writing-mode:vertical-rl}
+.hero-scroll-line{width:1px;height:80px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollDown 2s ease-in-out infinite}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--gray3);border-bottom:1px solid var(--gray3);padding:1rem 0;overflow:hidden;background:var(--gray1)}
+.marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;width:max-content}
+.marquee-item{font-family:var(--display);font-size:1rem;letter-spacing:0.3em;color:var(--gray4);padding:0 3rem;white-space:nowrap;display:flex;align-items:center;gap:2rem}
+.marquee-item .dot{color:var(--gold);font-size:1.5rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION SYSTEM */
+.s-header{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:2rem;border-bottom:1px solid var(--gray3);margin-bottom:4rem}
+.s-title{font-family:var(--display);font-size:clamp(3rem,6vw,7rem);letter-spacing:0.05em;line-height:1}
+.s-num{font-size:0.65rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase}
+
+/* MANIFIESTO */
+#manifiesto{padding:6rem 5vw;display:grid;grid-template-columns:3fr 2fr;gap:6vw;align-items:start;position:relative;overflow:hidden}
+.manifesto-txt .s-header{border-color:var(--gray3)}
+.about-lead{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2.2rem);font-style:italic;line-height:1.5;color:var(--white);margin-bottom:2rem;font-weight:300}
+.about-body{font-size:0.9rem;line-height:1.95;color:var(--gray5);margin-bottom:1.5rem}
+.about-body strong{color:var(--white);font-weight:400}
+.manifesto-vis{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center}
+.manifesto-era{font-family:var(--display);font-size:clamp(8rem,16vw,20rem);color:transparent;-webkit-text-stroke:1px rgba(184,149,42,0.06);line-height:1;letter-spacing:-0.03em;user-select:none;pointer-events:none}
+
+/* COMO FUNCIONA (PROCESO) */
+#como{padding:6rem 5vw;background:var(--gray1)}
+.process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:4rem}
+.process-track::before{content:'';position:absolute;top:2rem;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--gold),var(--gold),transparent)}
+.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem;padding:0 1rem}
+.pstep-circle{width:4rem;height:4rem;border:1px solid var(--gray3);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--gray1);position:relative;z-index:1;transition:border-color .3s,background .3s}
+.pstep:hover .pstep-circle{border-color:var(--gold);background:var(--gold-dim)}
+.pstep-n{font-family:var(--display);font-size:1.2rem;color:var(--gold)}
+.pstep-title{font-family:var(--display);font-size:1rem;letter-spacing:0.1em;color:var(--white)}
+.pstep-desc{font-size:0.75rem;line-height:1.7;color:var(--gray5)}
+
+/* DEMOS */
+#demos{padding:6rem 5vw}
+.demos-intro{font-size:0.9rem;line-height:1.9;color:var(--gray5);max-width:560px;margin-bottom:4rem}
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pcard{background:var(--bg);position:relative;overflow:hidden;cursor:none}
+.pcard-inner{position:relative;overflow:hidden;height:100%}
+.pcard-reel{aspect-ratio:9/16}
+.pcard-placeholder{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(184,149,42,0.12) 0%,rgba(7,7,10,0.9) 60%,var(--bg) 100%);transition:filter .4s}
+.pcard:hover .pcard-placeholder{filter:brightness(1.15)}
+.pcard-nicho{position:absolute;top:1.25rem;left:1.25rem;font-family:var(--display);font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);z-index:3;padding:0.3rem 0.7rem;border:1px solid rgba(184,149,42,0.3);background:rgba(7,7,10,0.4);backdrop-filter:blur(4px)}
+.pcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,10,0.95) 0%,rgba(7,7,10,0.3) 50%,transparent 100%);transition:opacity .4s}
+.pcard-data{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;transform:translateY(8px);transition:transform .4s;z-index:2}
+.pcard:hover .pcard-data{transform:translateY(0)}
+.pcard-cat{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;opacity:0;transition:opacity .4s .1s}
+.pcard:hover .pcard-cat{opacity:1}
+.pcard-name{font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.5rem);letter-spacing:0.05em;line-height:1.1;color:var(--white)}
+.pcard-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);width:56px;height:56px;border:1px solid rgba(237,233,226,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s,transform .4s,border-color .3s;z-index:3}
+.pcard:hover .pcard-play{opacity:1;transform:translate(-50%,-50%) scale(1);border-color:var(--gold)}
+.play-tri{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--white);margin-left:4px}
+.pcard-border{position:absolute;inset:0;border:1px solid var(--gray3);transition:border-color .4s;pointer-events:none;z-index:4}
+.pcard:hover .pcard-border{border-color:var(--gold)}
+
+/* PRICING */
+#pricing{padding:6rem 5vw;background:var(--gray1)}
+.pricing-intro{font-size:0.9rem;line-height:1.9;color:var(--gray5);max-width:560px;margin-bottom:4rem}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
+.tier{position:relative;background:var(--bg);border:1px solid var(--gray3);padding:3rem 2.5rem;display:flex;flex-direction:column;transition:border-color .4s,transform .4s}
+.tier:hover{border-color:var(--gold);transform:translateY(-4px)}
+.tier-featured{border-color:var(--gold)}
+.tier-badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);background:var(--bg);border:1px solid var(--gold);padding:0.4rem 1rem;white-space:nowrap}
+.tier-name{font-family:var(--display);font-size:1.4rem;letter-spacing:0.25em;color:var(--gray5);margin-bottom:2rem}
+.tier-price{font-family:var(--display);font-size:3.5rem;color:var(--white);line-height:1}
+.tier-price span{font-size:1.3rem;color:var(--gold)}
+.tier-price-old{font-family:var(--display);font-size:1.1rem;color:var(--gray4);text-decoration:line-through;margin-top:0.3rem;letter-spacing:0.1em}
+.tier-subtitle{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray5);margin-top:0.75rem;margin-bottom:2rem}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2.5rem;flex:1}
+.tier-list li{font-size:0.85rem;color:var(--gray5);line-height:1.5;padding-left:1.5rem;position:relative}
+.tier-list li::before{content:'✓';position:absolute;left:0;top:0;color:var(--gold)}
+.tier-cta{display:flex;align-items:center;justify-content:space-between;background:transparent;border:1px solid var(--gray3);color:var(--white);font-family:var(--display);font-size:1rem;letter-spacing:0.2em;padding:1rem 1.5rem;text-decoration:none;transition:background .3s,color .3s,border-color .3s;margin-top:auto}
+.tier-cta:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.tier-featured .tier-cta{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.tier-featured .tier-cta:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+
+/* CONTACT FORM BASE (reutilizable) */
+.cf-group{margin-bottom:1.5rem}
+.cf-label{display:block;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+.cf-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--gray3);color:var(--white);font-family:var(--body);font-size:0.95rem;font-weight:200;padding:0.75rem 0;outline:none;transition:border-color .3s;cursor:none}
+.cf-input:focus{border-bottom-color:var(--gold)}
+.cf-input::placeholder{color:var(--gray3)}
+textarea.cf-input{resize:none;min-height:90px}
+select.cf-input{-webkit-appearance:none;appearance:none;padding-right:1.5rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23b8952a' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.3rem center;cursor:none}
+select.cf-input option{background:var(--bg);color:var(--white)}
+.cf-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:1px solid var(--gray3);color:var(--white);font-family:var(--display);font-size:1.1rem;letter-spacing:0.15em;padding:1.2rem 1.5rem;cursor:none;transition:border-color .3s,color .3s;margin-top:1rem}
+.cf-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* LISTA DE ESPERA */
+#lista-espera{padding:6rem 5vw}
+.le-wrap{max-width:580px;margin:0 auto}
+.le-intro{font-size:0.9rem;line-height:1.9;color:var(--gray5);margin-bottom:1.25rem;text-align:center}
+.le-counter-group{margin-bottom:3rem}
+.le-counter{display:block;font-family:var(--display);font-size:0.8rem;letter-spacing:0.35em;color:var(--gold);text-align:center;margin-bottom:0}
+.le-counter .num{font-size:1.4rem;color:var(--white);margin:0 0.25rem;display:inline-block;transition:opacity .3s ease}
+.le-counter .num.fading{opacity:0;transition-duration:.2s}
+.le-counter-last{font-family:var(--display);font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-align:center;margin-top:0.75rem;display:none}
+.le-counter-last.on{display:block}
+.le-msg{margin-top:1.5rem;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;text-align:center;display:none}
+.le-msg.on{display:block}
+.le-msg-ok{color:var(--gold)}
+.le-msg-err{color:#c0392b}
+
+/* CREDIBILIDAD CRUZADA */
+#credibilidad{padding:6rem 5vw;background:var(--gray1);display:grid;grid-template-columns:2fr 3fr;gap:6vw;align-items:center}
+.cred-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.cred-eyebrow-line{width:2rem;height:1px;background:var(--gold)}
+.cred-eyebrow span{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold)}
+.cred-title{font-family:var(--display);font-size:clamp(2.5rem,4.5vw,4.5rem);letter-spacing:0.05em;line-height:1;margin-bottom:2rem;color:var(--white)}
+.cred-lead{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.5rem);font-style:italic;line-height:1.6;color:var(--white);margin-bottom:1.5rem;font-weight:300}
+.cred-close{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--gold);line-height:1.6;margin-top:1rem}
+.cred-link{display:inline-block;margin-top:2rem;font-family:var(--display);font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;position:relative;padding-bottom:6px}
+.cred-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(1);transform-origin:left;transition:transform .3s}
+.cred-link:hover::after{transform:scaleX(0);transform-origin:right}
+.cred-logos{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray3)}
+.client-name{font-family:var(--display);font-size:1rem;letter-spacing:0.15em;color:var(--gray4);transition:color .3s;padding:2.5rem 1.5rem;background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;min-height:110px;line-height:1.3}
+.client-name:hover{color:var(--white)}
+.cred-logos .cell-wide{grid-column:span 2}
+
+/* FOOTER */
+footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
+.ft-top{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:4rem;gap:0.75rem}
+.ft-logo-big{font-family:var(--display);font-size:clamp(3rem,6vw,5rem);letter-spacing:0.2em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.3rem}
+.ft-logo-big .dot{color:var(--gold)}
+.ft-tagline{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gray5)}
+.ft-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--gray3)}
+.ft-col-title{font-family:var(--display);font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+.ft-col li{font-size:0.85rem;color:var(--gray5);line-height:1.6}
+.ft-col a{color:var(--gray5);text-decoration:none;transition:color .3s}
+.ft-col a:hover{color:var(--white)}
+.ft-copy-bar{padding-top:2rem;display:flex;justify-content:center}
+.ft-copy{font-size:0.65rem;letter-spacing:0.2em;color:var(--gray4);text-align:center}
+.ft-copy .heart{color:var(--gold)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1.5rem 5vw}
+  .nav-links,.nav-cta{display:none}
+  .hero{padding:0 5vw 3rem}
+  .hero-h1 .line2{padding-left:0}
+  .hero-h1 .line3{padding-left:0}
+  #manifiesto{grid-template-columns:1fr}
+  .manifesto-vis{display:none}
+  .process-track{grid-template-columns:1fr 1fr}
+  .process-track::before{display:none}
+  .demos-grid{grid-template-columns:1fr}
+  .tiers-grid{grid-template-columns:1fr;gap:2.5rem}
+  .tier{padding:2.5rem 2rem}
+  #credibilidad{grid-template-columns:1fr;gap:3rem}
+  .ft-cols{grid-template-columns:1fr;gap:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">DREE AI</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">DREE<span class="dot">·</span>STUDIO</a>
+  <ul class="nav-links">
+    <li><a href="#demos">Producto</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#pricing">Precios</a></li>
+    <li><a href="#lista-espera">Beta</a></li>
+  </ul>
+  <a href="#lista-espera" class="nav-cta">Reservar lugar →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-number">AI</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>DREE AI · LA PRÓXIMA ERA</span>
+    </div>
+    <h1 class="hero-h1">
+      CONTENIDO
+      <span class="line2">QUE NUNCA DUERME</span>
+      <span class="line3">la próxima era del contenido audiovisual</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">UGC cinematográfico generado con inteligencia artificial. Avatares hiperrealistas promocionando tu producto en reels optimizados para conversión. Calidad de Dree Studio, escala que solo la IA puede dar.</p>
+    <a href="#como" class="hero-scroll-wrap">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-text">Scroll</span>
+    </a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item">CONTENIDO ILIMITADO <span class="dot">·</span></div>
+    <div class="marquee-item">48 HORAS DE ENTREGA <span class="dot">·</span></div>
+    <div class="marquee-item">SIN ACTORES · SIN SETS · SIN DEMORAS <span class="dot">·</span></div>
+    <div class="marquee-item">UGC QUE CONVIERTE <span class="dot">·</span></div>
+    <div class="marquee-item">CALIDAD CINEMATOGRÁFICA <span class="dot">·</span></div>
+    <div class="marquee-item">IA CON ALMA DE CINE <span class="dot">·</span></div>
+    <div class="marquee-item">LA PRÓXIMA ERA <span class="dot">·</span></div>
+    <div class="marquee-item">CONTENIDO ILIMITADO <span class="dot">·</span></div>
+    <div class="marquee-item">48 HORAS DE ENTREGA <span class="dot">·</span></div>
+    <div class="marquee-item">SIN ACTORES · SIN SETS · SIN DEMORAS <span class="dot">·</span></div>
+    <div class="marquee-item">UGC QUE CONVIERTE <span class="dot">·</span></div>
+    <div class="marquee-item">CALIDAD CINEMATOGRÁFICA <span class="dot">·</span></div>
+    <div class="marquee-item">IA CON ALMA DE CINE <span class="dot">·</span></div>
+    <div class="marquee-item">LA PRÓXIMA ERA <span class="dot">·</span></div>
+  </div>
+</div>
+
+<!-- MANIFIESTO -->
+<section id="manifiesto">
+  <div class="manifesto-txt">
+    <div class="s-header reveal">
+      <h2 class="s-title">NUEVA ERA</h2>
+      <span class="s-num">01 · MANIFIESTO</span>
+    </div>
+    <p class="about-lead reveal">"El contenido audiovisual no puede seguir siendo un lujo. Producir un reel profesional no debería tomar tres semanas ni costar cinco mil soles. Nosotros creemos en otra era."</p>
+    <p class="about-body reveal">Dree AI nace del ADN cinematográfico de <strong>Dree Studio</strong> — la productora detrás de proyectos para el <strong>Estado peruano</strong>, <strong>Mercedes-Benz</strong> y <strong>BCP</strong>. Tomamos esa obsesión por la calidad visual y la combinamos con inteligencia artificial para crear algo inédito en Latinoamérica: una plataforma donde cualquier marca puede tener contenido de nivel premium, en volumen, sin los costos ni tiempos de una producción tradicional.</p>
+    <p class="about-lead reveal" style="color:var(--gold);font-size:clamp(1.1rem,1.8vw,1.5rem);margin-top:2.5rem">Calidad que antes pertenecía a las grandes marcas. Ahora al alcance de las que están construyendo el futuro.</p>
+  </div>
+  <div class="manifesto-vis reveal">
+    <div class="manifesto-era">ERA</div>
+  </div>
+</section>
+
+<!-- DEMOS -->
+<section id="demos">
+  <div class="s-header reveal">
+    <h2 class="s-title">EN ACCIÓN</h2>
+    <span class="s-num">02 · DEMOS</span>
+  </div>
+  <p class="demos-intro reveal">Cada reel producido 100% con IA. Sin actores, sin sets, sin tomas repetidas. Calidad cinematográfica a escala.</p>
+  <div class="demos-grid">
+    <div class="pcard pcard-reel reveal reveal-delay-1">
+      <div class="pcard-inner">
+        <div class="pcard-placeholder"></div>
+        <div class="pcard-nicho">SKINCARE</div>
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">30 segundos</div>
+          <div class="pcard-name">Serum Vitamina C</div>
+        </div>
+        <div class="pcard-border"></div>
+      </div>
+    </div>
+    <div class="pcard pcard-reel reveal reveal-delay-2">
+      <div class="pcard-inner">
+        <div class="pcard-placeholder"></div>
+        <div class="pcard-nicho">FITNESS</div>
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">45 segundos</div>
+          <div class="pcard-name">Suplemento Pre-Workout</div>
+        </div>
+        <div class="pcard-border"></div>
+      </div>
+    </div>
+    <div class="pcard pcard-reel reveal reveal-delay-3">
+      <div class="pcard-inner">
+        <div class="pcard-placeholder"></div>
+        <div class="pcard-nicho">TECH</div>
+        <div class="pcard-overlay"></div>
+        <div class="pcard-play"><div class="play-tri"></div></div>
+        <div class="pcard-data">
+          <div class="pcard-cat">60 segundos</div>
+          <div class="pcard-name">App de Productividad</div>
+        </div>
+        <div class="pcard-border"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como">
+  <div class="s-header reveal">
+    <h2 class="s-title">PROCESO</h2>
+    <span class="s-num">03 · CÓMO FUNCIONA</span>
+  </div>
+  <div class="process-track">
+    <div class="pstep reveal reveal-delay-1">
+      <div class="pstep-circle"><span class="pstep-n">01</span></div>
+      <div class="pstep-title">Brief</div>
+      <p class="pstep-desc">Subes tu producto y cuentas qué quieres transmitir. Tono, audiencia, llamado a la acción.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-2">
+      <div class="pstep-circle"><span class="pstep-n">02</span></div>
+      <div class="pstep-title">Guion</div>
+      <p class="pstep-desc">Nuestra IA genera guiones optimizados para conversión. Tú eliges el que más te representa.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-3">
+      <div class="pstep-circle"><span class="pstep-n">03</span></div>
+      <div class="pstep-title">Producción</div>
+      <p class="pstep-desc">Avatar hiperrealista + voz clonada + edición cinematográfica. Todo automatizado.</p>
+    </div>
+    <div class="pstep reveal reveal-delay-4">
+      <div class="pstep-circle"><span class="pstep-n">04</span></div>
+      <div class="pstep-title">Entrega</div>
+      <p class="pstep-desc">Recibes tus reels en 48 horas, listos para publicar. Descarga ilimitada, uso comercial incluido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING BETA -->
+<section id="pricing">
+  <div class="s-header reveal">
+    <h2 class="s-title">BETA</h2>
+    <span class="s-num">04 · PRECIOS</span>
+  </div>
+  <p class="pricing-intro reveal">Precios de lanzamiento. Los primeros fundadores mantienen tarifa por 12 meses. Después los planes suben a precio regular.</p>
+  <div class="tiers-grid">
+    <div class="tier reveal reveal-delay-1">
+      <div class="tier-name">STARTER</div>
+      <div class="tier-price"><span>S/</span> 497</div>
+      <div class="tier-price-old">S/ 997</div>
+      <div class="tier-subtitle">por mes</div>
+      <ul class="tier-list">
+        <li>4 reels al mes</li>
+        <li>Avatar stock a elegir</li>
+        <li>Guiones optimizados con IA</li>
+        <li>Entrega en 48 horas</li>
+        <li>Uso comercial incluido</li>
+      </ul>
+      <a href="#lista-espera" data-plan="starter" class="tier-cta">Reservar lugar <span>→</span></a>
+    </div>
+    <div class="tier tier-featured reveal reveal-delay-2">
+      <div class="tier-badge">MÁS POPULAR</div>
+      <div class="tier-name">GROWTH</div>
+      <div class="tier-price"><span>S/</span> 997</div>
+      <div class="tier-price-old">S/ 1,997</div>
+      <div class="tier-subtitle">por mes</div>
+      <ul class="tier-list">
+        <li>10 reels al mes</li>
+        <li>Avatar stock premium</li>
+        <li>Guiones + variantes para A/B testing</li>
+        <li>Entrega en 48 horas</li>
+        <li>Música y efectos cinematográficos</li>
+        <li>Uso comercial ilimitado</li>
+      </ul>
+      <a href="#lista-espera" data-plan="growth" class="tier-cta">Reservar lugar <span>→</span></a>
+    </div>
+    <div class="tier reveal reveal-delay-3">
+      <div class="tier-name">SCALE</div>
+      <div class="tier-price"><span>S/</span> 1,797</div>
+      <div class="tier-price-old">S/ 3,497</div>
+      <div class="tier-subtitle">por mes</div>
+      <ul class="tier-list">
+        <li>20 reels al mes</li>
+        <li>Avatar stock premium</li>
+        <li>Guiones ilimitados + A/B testing</li>
+        <li>Prioridad de producción (24h)</li>
+        <li>Música, efectos y color grading cine</li>
+        <li>Uso comercial ilimitado</li>
+        <li>Account manager dedicado</li>
+      </ul>
+      <a href="#lista-espera" data-plan="scale" class="tier-cta">Reservar lugar <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- LISTA DE ESPERA / FORM -->
+<section id="lista-espera">
+  <div class="s-header reveal">
+    <h2 class="s-title">SÉ FUNDADOR</h2>
+    <span class="s-num">05 · RESERVA</span>
+  </div>
+  <div class="le-wrap reveal">
+    <p class="le-intro">Cupos limitados en la primera cohorte. Los fundadores acceden antes, pagan menos, y se quedan con ese precio durante 12 meses. Dejamos de aceptar fundadores cuando cerramos los primeros 30 cupos.</p>
+    <div class="le-counter-group">
+      <div class="le-counter"><span class="num" id="leCounterNum">07</span> DE 30 LUGARES RESERVADOS</div>
+      <div class="le-counter-last" id="leCounterLast">— ÚLTIMOS CUPOS DISPONIBLES</div>
+    </div>
+    <form id="leForm" novalidate>
+      <div class="cf-group">
+        <label class="cf-label" for="le-nombre">Nombre</label>
+        <input class="cf-input" id="le-nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="le-empresa">Empresa o marca</label>
+        <input class="cf-input" id="le-empresa" name="empresa" type="text" placeholder="Nombre de tu marca" required>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="le-email">Correo electrónico</label>
+        <input class="cf-input" id="le-email" name="email" type="email" placeholder="tu@empresa.com" required>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="le-plan">Plan de interés</label>
+        <select class="cf-input" id="le-plan" name="plan" required>
+          <option value="" disabled selected>Selecciona un plan</option>
+          <option value="starter">Starter · S/ 497</option>
+          <option value="growth">Growth · S/ 997</option>
+          <option value="scale">Scale · S/ 1,797</option>
+          <option value="undecided">No estoy seguro todavía</option>
+        </select>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="le-industria">Industria</label>
+        <select class="cf-input" id="le-industria" name="industria" required>
+          <option value="" disabled selected>Selecciona tu industria</option>
+          <option value="cosmetica">Cosmética / Skincare</option>
+          <option value="fitness">Fitness / Wellness</option>
+          <option value="moda">Moda / Accesorios</option>
+          <option value="tech">Tecnología / App</option>
+          <option value="turismo">Turismo / Hospitalidad</option>
+          <option value="infoproductos">Infoproductos / Cursos</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="cf-group">
+        <label class="cf-label" for="le-mensaje">¿Algo específico que quieras contarnos?</label>
+        <textarea class="cf-input" id="le-mensaje" name="mensaje" rows="3" placeholder="Opcional"></textarea>
+      </div>
+      <button type="submit" class="cf-btn" id="leBtn">Reservar mi lugar <span>→</span></button>
+      <div class="le-msg le-msg-ok" id="leSuccess">✓ Lugar reservado. Te contactamos esta semana con acceso a la beta.</div>
+      <div class="le-msg le-msg-err" id="leError">✗ Algo salió mal. Intenta de nuevo.</div>
+    </form>
+  </div>
+</section>
+
+<!-- CREDIBILIDAD CRUZADA -->
+<section id="credibilidad">
+  <div class="cred-left reveal">
+    <div class="cred-eyebrow">
+      <div class="cred-eyebrow-line"></div>
+      <span>Quiénes somos</span>
+    </div>
+    <h2 class="cred-title">DETRÁS DE DREE AI</h2>
+    <p class="cred-lead">Dree AI es un producto de Dree Studio, productora audiovisual cinematográfica con base en Lima.</p>
+    <p class="about-body">Hemos producido contenido para el <strong>Estado peruano</strong>, <strong>Mercedes-Benz</strong>, <strong>BCP</strong>, y el <strong>Gobierno Regional de Lambayeque</strong>. Cada frame que entregamos sigue los estándares que aprendimos haciendo cine institucional para marcas que no pueden fallar.</p>
+    <p class="cred-close">Esa obsesión por la calidad ahora vive también en nuestra IA.</p>
+    <a href="index.html" class="cred-link">Conoce Dree Studio →</a>
+  </div>
+  <div class="cred-logos reveal">
+    <div class="client-name">GERCETUR</div>
+    <div class="client-name">BCP</div>
+    <div class="client-name">MERCEDES-BENZ</div>
+    <div class="client-name">GRUPO SAN ANTONIO</div>
+    <div class="client-name cell-wide">GOBIERNO REGIONAL LAMBAYEQUE</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <a href="index.html" class="ft-logo-big">DREE<span class="dot">·</span>STUDIO</a>
+    <div class="ft-tagline">AI · UGC Cinematográfico con IA</div>
+  </div>
+  <div class="ft-cols">
+    <div class="ft-col">
+      <div class="ft-col-title">Contacto</div>
+      <ul>
+        <li><a href="mailto:dreestudio.contacto@gmail.com">dreestudio.contacto@gmail.com</a></li>
+        <li>Lima, Perú</li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Dree AI</div>
+      <ul>
+        <li><a href="#demos">Producto</a></li>
+        <li><a href="#como">Cómo funciona</a></li>
+        <li><a href="#pricing">Precios</a></li>
+        <li><a href="#lista-espera">Beta</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Dree Studio</div>
+      <ul>
+        <li><a href="index.html">Productora</a></li>
+        <li><a href="https://www.linkedin.com/in/andreerome/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://dreerom.myportfolio.com/" target="_blank" rel="noopener">Portfolio</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-copy-bar">
+    <div class="ft-copy">© 2025 Dree Studio S.A.C. · Lima, Perú · Built with <span class="heart">♥</span> en el norte</div>
+  </div>
+</footer>
+
+<script>
+// LOADER
+let pct = 0;
+const pctEl = document.getElementById('loaderPct');
+const loaderInterval = setInterval(() => {
+  pct += Math.random() * 15;
+  if(pct >= 100){ pct = 100; clearInterval(loaderInterval); }
+  pctEl.textContent = Math.floor(pct) + '%';
+  if(pct === 100) setTimeout(() => document.getElementById('loader').classList.add('done'), 300);
+}, 120);
+
+// CURSOR
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+document.addEventListener('mousedown', () => cur.classList.add('click'));
+document.addEventListener('mouseup', () => cur.classList.remove('click'));
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.classList.add('hover'); curRing.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); curRing.classList.remove('hover'); });
+});
+(function animCursor(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  curRing.style.left=rx+'px'; curRing.style.top=ry+'px';
+  requestAnimationFrame(animCursor);
+})();
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// SCROLL REVEAL
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// LISTA DE ESPERA — prefill plan desde URL o data-plan, + submit
+function setPlanSelect(plan){
+  if(!plan) return;
+  const sel = document.getElementById('le-plan');
+  if(!sel) return;
+  const valid = ['starter','growth','scale','undecided'];
+  if(valid.includes(plan)) sel.value = plan;
+}
+(function initPlanFromURL(){
+  try{
+    const url = new URL(window.location.href);
+    let plan = url.searchParams.get('plan');
+    if(!plan && url.hash && url.hash.includes('?')){
+      plan = new URLSearchParams(url.hash.split('?')[1]).get('plan');
+    }
+    if(plan) setPlanSelect(plan);
+  }catch(e){}
+})();
+document.querySelectorAll('.tier-cta[data-plan]').forEach(el => {
+  el.addEventListener('click', () => setPlanSelect(el.getAttribute('data-plan')));
+});
+const leForm = document.getElementById('leForm');
+if(leForm){
+  leForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = document.getElementById('leBtn');
+    const ok = document.getElementById('leSuccess');
+    const err = document.getElementById('leError');
+    ok.classList.remove('on'); err.classList.remove('on');
+    if(!e.target.checkValidity()){ e.target.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(e.target));
+    console.log('[Dree AI Beta Signup]', data);
+    btn.disabled = true;
+    btn.textContent = 'Enviado ✓';
+    ok.classList.add('on');
+    setTimeout(() => {
+      e.target.reset(); btn.disabled = false;
+      btn.innerHTML = 'Reservar mi lugar <span>→</span>';
+      ok.classList.remove('on');
+    }, 5000);
+  });
+}
+
+// CONTADOR DINÁMICO — reserva de cupos
+(function initCounter(){
+  const BASE = 7, MAX = 28, KEY = 'dree_ai_counter';
+  const numEl = document.getElementById('leCounterNum');
+  const lastEl = document.getElementById('leCounterLast');
+  if(!numEl) return;
+  const pad = n => String(n).padStart(2,'0');
+  let current;
+  try{
+    const stored = parseInt(sessionStorage.getItem(KEY), 10);
+    current = (Number.isFinite(stored) && stored >= BASE && stored <= MAX) ? stored : BASE;
+  }catch(e){ current = BASE; }
+  numEl.textContent = pad(current);
+  const checkLast = () => { if(current >= MAX && lastEl) lastEl.classList.add('on'); };
+  checkLast();
+  const randomDelay = () => Math.floor(Math.random() * (25-8) + 8) * 60 * 1000;
+  function scheduleNext(){
+    if(current >= MAX) return;
+    setTimeout(() => {
+      current += 1;
+      try{ sessionStorage.setItem(KEY, String(current)); }catch(e){}
+      numEl.classList.add('fading');
+      setTimeout(() => {
+        numEl.textContent = pad(current);
+        numEl.classList.remove('fading');
+        checkLast();
+        scheduleNext();
+      }, 200);
+    }, randomDelay());
+  }
+  scheduleNext();
+})();
+</script>
+</body>
+</html>
