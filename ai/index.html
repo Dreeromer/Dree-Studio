@@ -538,7 +538,9 @@ footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
       <div class="le-counter"><span class="num" id="leCounterNum">07</span> DE 30 LUGARES RESERVADOS</div>
       <div class="le-counter-last" id="leCounterLast">— ÚLTIMOS CUPOS DISPONIBLES</div>
     </div>
-    <form id="leForm" novalidate>
+    <form id="leForm" action="https://formspree.io/f/xyklpner" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Dree AI — Reserva de beta">
+      <input type="hidden" name="origen" value="dree.studio/ai">
       <div class="cf-group">
         <label class="cf-label" for="le-nombre">Nombre</label>
         <input class="cf-input" id="le-nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
@@ -707,23 +709,34 @@ document.querySelectorAll('.tier-cta[data-plan]').forEach(el => {
 });
 const leForm = document.getElementById('leForm');
 if(leForm){
-  leForm.addEventListener('submit', e => {
+  leForm.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('leBtn');
     const ok = document.getElementById('leSuccess');
     const err = document.getElementById('leError');
     ok.classList.remove('on'); err.classList.remove('on');
     if(!e.target.checkValidity()){ e.target.reportValidity(); return; }
-    const data = Object.fromEntries(new FormData(e.target));
-    console.log('[Dree AI Beta Signup]', data);
     btn.disabled = true;
-    btn.textContent = 'Enviado ✓';
-    ok.classList.add('on');
-    setTimeout(() => {
-      e.target.reset(); btn.disabled = false;
+    btn.textContent = 'Enviando...';
+    try {
+      const res = await fetch('https://formspree.io/f/xyklpner', {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { 'Accept': 'application/json' }
+      });
+      if(!res.ok) throw new Error('Formspree respondió ' + res.status);
+      btn.textContent = 'Enviado ✓';
+      ok.classList.add('on');
+      setTimeout(() => {
+        e.target.reset(); btn.disabled = false;
+        btn.innerHTML = 'Reservar mi lugar <span>→</span>';
+        ok.classList.remove('on');
+      }, 5000);
+    } catch(ex) {
+      err.classList.add('on');
+      btn.disabled = false;
       btn.innerHTML = 'Reservar mi lugar <span>→</span>';
-      ok.classList.remove('on');
-    }, 5000);
+    }
   });
 }
 
