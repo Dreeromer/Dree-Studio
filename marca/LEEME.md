@@ -15,12 +15,20 @@ y con el logo ocupando solo el 39% del lienzo.
 
 Los SVG pesan 50 KB y escalan sin perder nitidez.
 
-**Ojo con "studio".** En el original es una mancha negra maciza con un filete
-blanco por dentro. Sobre el fondo casi negro del sitio el cuerpo desaparece y
-solo queda ese filete: "Dree" se lee perfecto y "studio" casi no. Es inherente
-al logo, no al recorte. Por eso la web usa `logo-dree-oscuro.svg`, con el contorno en
-oro. Sobre fondo claro (papel, membretes) va `logo-dree-claro.svg`, que sí
-respeta los colores del original.
+**Por qué el negativo.** En el original el logo vive sobre beige: el trazo es
+negro y el interior de las letras, blanco. Sobre el fondo casi negro del sitio
+eso no funciona — el trazo desaparece y "studio", que es una mancha maciza, se
+pierde entera. La versión negativa invierte esa relación: el trazo pasa a crema
+y el interior queda **calado**, no pintado, así que el fondo se ve a través. Es
+un solo trazado con regla par-impar, de modo que el mismo archivo sirve sobre
+cualquier fondo oscuro sin repintar nada.
+
+Sobre fondo claro se usa `logo-dree-claro.svg`, que sí respeta los colores del
+original.
+
+**Tamaño mínimo:** "Dree" aguanta desde unos 40 px de alto; "studio" empieza a
+cerrarse por debajo de ~45 px. En la barra del sitio va a 48 px, que es el
+límite. Por debajo de eso conviene usar solo "Dree".
 
 ## Cómo se separan las capas
 
@@ -31,6 +39,13 @@ sino **por neutralidad de color**: el blanco es (255,255,255) y el beige es
 cálido, con 15 puntos de diferencia entre R y B. `trazar.py` hace ese corte y
 saca dos siluetas: la placa exterior (con las contraformas caladas de verdad) y
 el relleno blanco.
+
+Ese mismo criterio permite bajar el umbral de brillo hasta 214 sin colar fondo,
+que es lo que hace falta para que el filete interior de "studio" —de uno o dos
+píxeles y antialiasado— salga continuo en vez de a trozos.
+
+El trazado se hace a 8x con elementos morfológicos **circulares**: los cuadrados
+dejan esquinas y picos que a tamaño grande se leen como trabajo mal hecho.
 
 ## Animación (no se usa en la web)
 
