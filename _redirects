@@ -1,3 +1,4 @@
-# Enlaces antiguos de la landing de Dree AI
-/ai.html    /ai/       301
-/ai/index.html  /ai/   301
+# La landing de Dree AI se retiró: las URLs indexadas van a la portada
+/ai        /   301
+/ai/*      /   301
+/ai.html   /   301

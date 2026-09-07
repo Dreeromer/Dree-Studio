@@ -154,11 +154,6 @@ nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blu
 .nav-cta{font-family:var(--display);font-size:0.85rem;letter-spacing:0.15em;color:var(--gold);border:1px solid rgba(184,149,42,0.4);padding:0.6rem 1.4rem;text-decoration:none;transition:background .3s,color .3s}
 .nav-cta:hover{background:var(--gold);color:var(--bg)}
 .nav-right{display:flex;align-items:center;gap:1.25rem}
-.nav-ai{display:inline-flex;align-items:center;gap:0.35rem;font-family:var(--display);font-size:0.75rem;letter-spacing:0.15em;text-decoration:none;color:var(--gold);border:1px solid var(--gold);padding:0.45rem 1.1rem;transition:background .3s,color .3s;white-space:nowrap}
-.nav-ai:hover{background:var(--gold);color:var(--bg)}
-.nav-ai-badge{display:inline-block;background:var(--gold-bright);color:var(--bg);padding:0.15rem 0.5rem;font-size:0.55rem;letter-spacing:0.2em;font-family:var(--display);margin-left:0.25rem}
-.nav-ai:hover .nav-ai-badge{background:var(--bg);color:var(--gold-bright)}
-.nav-ai-text-short{display:none}
 
 /* HERO */
 .hero{height:100vh;display:grid;grid-template-rows:1fr auto;padding:0 5vw 4rem;position:relative;overflow:hidden}
@@ -375,10 +370,6 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 @media(max-width:768px){
   nav{padding:1.5rem 5vw}
   .nav-links,.nav-cta{display:none}
-  .nav-ai-text-full{display:none}
-  .nav-ai-text-short{display:inline}
-  .nav-ai-badge{display:none}
-  .nav-ai{font-size:0.7rem;padding:0.4rem 0.9rem}
   .hero{padding:0 5vw 3rem}
   .hero-h1 .line2{padding-left:0}
   .hero-h1 .line3{padding-left:0}
@@ -393,6 +384,21 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   footer{grid-template-columns:1fr;text-align:center}
   .ft-links{justify-content:center}
 }
+
+/* CIERRE DE MARCA */
+.signoff{padding:6rem 5vw 4rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.signoff-rule{width:64px;height:1px;background:var(--gold);opacity:.7}
+.signoff-media{width:100%;max-width:560px;aspect-ratio:16/9;position:relative}
+/* El negro del vídeo no cae exacto sobre --bg tras la compresión y se nota el
+   rectángulo: esta máscara disuelve los bordes contra el fondo de la página. */
+.signoff-video,.signoff-still{
+  width:100%;height:100%;object-fit:contain;display:block;
+  -webkit-mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
+  mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
+}
+.signoff-still{display:none}
+.signoff-line{font-family:var(--display);font-size:.8rem;letter-spacing:.32em;color:var(--gray4);text-align:center}
+@media(max-width:768px){.signoff{padding:4rem 5vw 3rem}}
 
 /* WHATSAPP FLOTANTE */
 .wa-float{
@@ -417,6 +423,9 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
   .cur,.cur-ring{display:none}
+  /* El logo animado pasa a ser una imagen fija */
+  .signoff-video{display:none}
+  .signoff-still{display:block}
 }
 </style>
 </head>
@@ -441,11 +450,6 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
     <li><a href="#cotizar">Cotizar</a></li>
   </ul>
   <div class="nav-right">
-    <a href="/ai/" class="nav-ai">
-      <span class="nav-ai-text-full">Dree AI →</span>
-      <span class="nav-ai-text-short">AI →</span>
-      <span class="nav-ai-badge">NUEVO</span>
-    </a>
     <a href="#contacto" class="nav-cta">Trabajemos juntos</a>
   </div>
 </nav>
@@ -903,6 +907,20 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   </div>
 </section>
 
+<!-- CIERRE DE MARCA: logo animado, a modo de placa final de película -->
+<section class="signoff" id="cierre">
+  <div class="signoff-rule"></div>
+  <div class="signoff-media">
+    <video id="logoVideo" class="signoff-video" muted loop playsinline preload="none"
+           poster="logo-anim-poster.jpg" aria-label="Logotipo animado de Dree Studio">
+      <source src="logo-anim.mp4" type="video/mp4">
+    </video>
+    <img class="signoff-still" src="logo-anim-poster.jpg" alt="Logotipo de Dree Studio"
+         width="1280" height="720" loading="lazy" decoding="async">
+  </div>
+  <p class="signoff-line">Producción cinematográfica · Chiclayo · Lima · Perú</p>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo">DREE<span>·</span>STUDIO</div>
@@ -920,7 +938,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 </a>
 <script>
   // Formato internacional sin +, espacios ni guiones. Ej: '51987654321'
-  const WHATSAPP_NUM = '';
+  const WHATSAPP_NUM = '51940628683';
   const WHATSAPP_MSG = 'Hola Dree Studio, vi su web y quiero cotizar un proyecto audiovisual.';
   if (WHATSAPP_NUM) {
     const url = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + encodeURIComponent(WHATSAPP_MSG);
@@ -1098,6 +1116,21 @@ async function handleCotizSubmit(e) {
   btn.textContent = 'Solicitar propuesta formal →';
   btn.disabled = false;
 }
+
+// El logo animado solo se descarga y reproduce cuando entra en pantalla,
+// y se detiene al salir: no gasta datos ni batería en móvil.
+(function () {
+  const v = document.getElementById('logoVideo');
+  if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (e.isIntersecting) { v.play().catch(function () {}); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.25 });
+  io.observe(v);
+})();
 
 async function handleContactSubmit(e) {
   e.preventDefault();
