@@ -8,17 +8,18 @@ y con el logo ocupando solo el 39% del lienzo.
 
 | Archivo | Cuándo |
 |---|---|
-| `logo-dree-oscuro.svg` | Fondos oscuros. Contorno oro `#b8952a`, relleno crema `#ede9e2`. Es el que usa la web (copiado en la raíz como `logo-dree.svg`). |
-| `logo-dree-claro.svg` | Fondos claros. Contorno negro y relleno blanco, como el original. |
+| `logo-dree-claro.svg` | **El que usa la web** (copiado en la raíz como `logo-dree.svg`). Colores del original: contorno negro, relleno blanco. |
+| `logo-dree-oscuro.svg` | Contorno oro `#b8952a`, relleno crema `#ede9e2`. La alternativa si se quiere que "studio" se lea sobre fondo oscuro. |
 | `logo-dree-mono.svg` | Una sola tinta: sellos, bordados, serigrafía, documentos oficiales. |
 | `logo-dree-transparente.png` | El original recortado, sin el fondo beige, por si hace falta un mapa de bits. |
 
 Los SVG pesan 50 KB y escalan sin perder nitidez.
 
-**Ojo con el tamaño mínimo.** "Dree" se lee bien desde unos 40 px de alto, pero
-"studio" se convierte en una mancha por debajo de ~90 px: sus contraformas son
-demasiado finas para el grosor del contorno. Para tamaños chicos, usar solo
-"Dree" o rehacer "studio" con una tipografía que aguante.
+**Ojo con "studio".** En el original es una mancha negra maciza con un filete
+blanco por dentro. Sobre el fondo casi negro del sitio el cuerpo desaparece y
+solo queda ese filete: "Dree" se lee perfecto y "studio" casi no. Es inherente
+al logo, no al recorte. Las salidas son `logo-dree-oscuro.svg` (contorno oro) o
+rehacer "studio" con una tipografía que aguante tamaños chicos.
 
 ## Cómo se separan las capas
 
@@ -30,7 +31,10 @@ cálido, con 15 puntos de diferencia entre R y B. `trazar.py` hace ese corte y
 saca dos siluetas: la placa exterior (con las contraformas caladas de verdad) y
 el relleno blanco.
 
-## Para volver a generar la animación
+## Animación (no se usa en la web)
+
+Se montó un sting en el que el logo se escribía de cero y luego se retiró del
+sitio. El material queda aquí por si se retoma.
 
 - `logo-dree-3d.blend` — el proyecto de Blender, editable a mano.
 - `logo_sting.py` — construye la escena entera desde cero.

@@ -129,12 +129,9 @@ body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight
 #loader.done{opacity:0;pointer-events:none}
 /* Al entrar a la página el logo no se apaga de golpe: crece un punto, se
    desenfoca y se va, como si se esfumara. */
-.loader-media{width:min(78vw,620px);aspect-ratio:16/9;transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter 1.1s ease,opacity 1.1s ease}
+.loader-media{width:min(72vw,520px);transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter 1.1s ease,opacity 1.1s ease}
 #loader.done .loader-media{transform:scale(1.07);filter:blur(7px);opacity:0}
-.loader-video,.loader-still{width:100%;height:100%;object-fit:contain;display:block;
-  -webkit-mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
-  mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%)}
-.loader-still{display:none}
+.loader-logo{width:100%;height:auto;display:block}
 .loader-bar-wrap{width:200px;height:1px;background:var(--gray3);overflow:hidden}
 .loader-bar{height:100%;background:var(--gold);width:0;transition:width .25s linear}
 .loader-pct{font-size:0.65rem;letter-spacing:0.4em;color:var(--gray4);font-family:var(--display)}
@@ -149,7 +146,10 @@ body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2.5rem 5vw;mix-blend-mode:normal;transition:padding .4s,background .4s}
 nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blur(20px)}
-.nav-logo{display:block;text-decoration:none;line-height:0}
+.nav-logo{display:block;text-decoration:none;line-height:0;
+  opacity:0;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .5s ease,transform .5s ease}
+nav.scrolled .nav-logo{opacity:1;transform:none;pointer-events:auto}
 .nav-logo img{height:48px;width:auto;display:block}
 @media(max-width:768px){.nav-logo img{height:34px}}
 .nav-links{display:flex;gap:3rem;list-style:none}
@@ -171,8 +171,8 @@ nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blu
 .hero-eyebrow-line{width:3rem;height:1px;background:var(--gold)}
 .hero-eyebrow span{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold)}
 .hero-h1{font-family:var(--display);font-size:clamp(4.5rem,11vw,12rem);line-height:0.88;letter-spacing:0.02em;opacity:0;animation:fadeUp 1s ease 2.7s forwards}
-.hero-h1 .line2{display:block;-webkit-text-stroke:1px rgba(237,233,226,0.2);color:transparent;padding-left:15vw}
-.hero-h1 .line3{display:block;color:var(--gold);font-size:0.45em;font-family:var(--serif);font-style:italic;letter-spacing:0.08em;-webkit-text-stroke:0;padding-left:30vw;margin-top:0.5rem}
+.hero-logo{display:block;width:min(46vw,600px);max-height:38vh;height:auto;object-fit:contain;object-position:left}
+.hero-h1 .line3{display:block;color:var(--gold);font-size:clamp(2rem,5vw,5rem);font-family:var(--serif);font-style:italic;letter-spacing:0.08em;-webkit-text-stroke:0;padding-left:30vw;margin-top:0.5rem}
 .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;position:relative;z-index:2;opacity:0;animation:fadeUp 1s ease 3s forwards}
 .hero-desc{max-width:340px;font-size:0.9rem;line-height:1.85;color:var(--gray5);font-weight:200}
 .hero-scroll-wrap{display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-decoration:none}
@@ -377,7 +377,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   nav{padding:1.5rem 5vw}
   .nav-links,.nav-cta{display:none}
   .hero{padding:0 5vw 3rem}
-  .hero-h1 .line2{padding-left:0}
+  .hero-logo{width:78vw;max-height:30vh}
   .hero-h1 .line3{padding-left:0}
   .projects-r1,.projects-r2,.projects-r3{grid-template-columns:1fr}
   .pcard-big .pcard-inner,.pcard-sm .pcard-inner,.pcard-md .pcard-inner{min-height:240px}
@@ -390,21 +390,6 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   footer{grid-template-columns:1fr;text-align:center}
   .ft-links{justify-content:center}
 }
-
-/* CIERRE DE MARCA */
-.signoff{padding:6rem 5vw 4rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
-.signoff-rule{width:64px;height:1px;background:var(--gold);opacity:.7}
-.signoff-media{width:100%;max-width:560px;aspect-ratio:16/9;position:relative}
-/* El negro del vídeo no cae exacto sobre --bg tras la compresión y se nota el
-   rectángulo: esta máscara disuelve los bordes contra el fondo de la página. */
-.signoff-video,.signoff-still{
-  width:100%;height:100%;object-fit:contain;display:block;
-  -webkit-mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
-  mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
-}
-.signoff-still{display:none}
-.signoff-line{font-family:var(--display);font-size:.8rem;letter-spacing:.32em;color:var(--gray4);text-align:center}
-@media(max-width:768px){.signoff{padding:4rem 5vw 3rem}}
 
 /* WHATSAPP FLOTANTE */
 .wa-float{
@@ -429,9 +414,6 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
   .cur,.cur-ring{display:none}
-  /* El logo animado pasa a ser una imagen fija */
-  .signoff-video{display:none}
-  .signoff-still{display:block}
 }
 </style>
 </head>
@@ -439,11 +421,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 
 <div id="loader">
   <div class="loader-media">
-    <video id="loaderVideo" class="loader-video" muted playsinline preload="auto"
-           poster="logo-sting-poster.jpg" aria-label="Logotipo de Dree Studio">
-      <source src="logo-sting.mp4" type="video/mp4">
-    </video>
-    <img class="loader-still" src="logo-sting-poster.jpg" alt="Dree Studio" width="1280" height="720">
+    <img class="loader-logo" src="logo-dree.svg" alt="Dree Studio" width="757" height="436">
   </div>
   <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
   <div class="loader-pct" id="loaderPct">0%</div>
@@ -479,8 +457,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
       <span>Chiclayo · Lima · Perú</span>
     </div>
     <h1 class="hero-h1">
-      DREE
-      <span class="line2">STUDIO</span>
+      <img class="hero-logo" src="logo-dree.svg" alt="Dree Studio" width="757" height="436">
       <span class="line3">producción cinematográfica</span>
     </h1>
   </div>
@@ -921,20 +898,6 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   </div>
 </section>
 
-<!-- CIERRE DE MARCA: logo animado, a modo de placa final de película -->
-<section class="signoff" id="cierre">
-  <div class="signoff-rule"></div>
-  <div class="signoff-media">
-    <video id="logoVideo" class="signoff-video" muted playsinline preload="none"
-           poster="logo-sting-poster.jpg" aria-label="Logotipo animado de Dree Studio">
-      <source src="logo-sting.mp4" type="video/mp4">
-    </video>
-    <img class="signoff-still" src="logo-sting-poster.jpg" alt="Logotipo de Dree Studio"
-         width="1280" height="720" loading="lazy" decoding="async">
-  </div>
-  <p class="signoff-line">Producción cinematográfica · Chiclayo · Lima · Perú</p>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo">DREE<span>·</span>STUDIO</div>
@@ -981,20 +944,16 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 </div>
 
 <script>
-// LOADER: el sting se dibuja mientras la página carga de verdad. Se entra
-// cuando se cumplen las dos cosas: la animación terminó y la página está lista.
+// LOADER: el logotipo se muestra mientras la página carga de verdad. Se entra
+// cuando está lista, con un mínimo en pantalla para que dé tiempo a verlo.
 (function () {
   const loader = document.getElementById('loader');
-  const video  = document.getElementById('loaderVideo');
   const pctEl  = document.getElementById('loaderPct');
   const barEl  = document.getElementById('loaderBar');
-  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  let cargada = document.readyState === 'complete';
-  let stingListo = false;
+  const MINIMO = 1100;               // ms que el logo se queda como poco
+  const RESCATE = 7000;              // ms tras los que se entra pase lo que pase
+  const arranque = Date.now();
   let salido = false;
-
-  window.addEventListener('load', function () { cargada = true; intentarSalir(); });
 
   function pintar(p) {
     const v = Math.max(0, Math.min(100, Math.round(p * 100)));
@@ -1011,34 +970,23 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
     setTimeout(function () { loader.style.display = 'none'; }, 1200);
   }
 
-  function intentarSalir() {
-    if (cargada && stingListo) salir();
+  // Si algo se cuelga al cargar, nadie se queda atrapado en esta pantalla
+  const rescate = setTimeout(salir, RESCATE);
+
+  // La barra avanza hacia el 95% mientras se carga; el 100% solo es real
+  const avance = setInterval(function () {
+    const t = Math.min((Date.now() - arranque) / MINIMO, 1);
+    pintar(t * 0.95);
+  }, 60);
+
+  function listo() {
+    clearInterval(avance);
+    const falta = Math.max(0, MINIMO - (Date.now() - arranque));
+    setTimeout(salir, falta);
   }
 
-  // Red 3G, autoplay bloqueado, formato no soportado: pase lo que pase nadie
-  // se queda atrapado en la pantalla de carga.
-  const rescate = setTimeout(salir, 7000);
-
-  if (quieto || !video) {
-    pintar(1);
-    stingListo = true;
-    setTimeout(intentarSalir, 400);
-    return;
-  }
-
-  video.addEventListener('timeupdate', function () {
-    if (!video.duration) return;
-    const p = video.currentTime / video.duration;
-    // Sin la página lista no se llega al 100%: el número no debe mentir
-    pintar(cargada ? p : Math.min(p, 0.95));
-  });
-  video.addEventListener('ended', function () { stingListo = true; intentarSalir(); });
-  video.addEventListener('error', function () { stingListo = true; intentarSalir(); });
-
-  const arranque = video.play();
-  if (arranque && arranque.catch) {
-    arranque.catch(function () { stingListo = true; intentarSalir(); });
-  }
+  if (document.readyState === 'complete') listo();
+  else window.addEventListener('load', listo);
 })();
 
 // CURSOR
@@ -1180,20 +1128,6 @@ async function handleCotizSubmit(e) {
   btn.textContent = 'Solicitar propuesta formal →';
   btn.disabled = false;
 }
-
-// El logo animado solo se descarga y reproduce cuando entra en pantalla,
-// y se detiene al salir: no gasta datos ni batería en móvil.
-(function () {
-  const v = document.getElementById('logoVideo');
-  if (!v) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const io = new IntersectionObserver(function (entradas) {
-    entradas.forEach(function (e) {
-      if (e.isIntersecting) { v.play().catch(function () {}); io.unobserve(v); }
-    });
-  }, { threshold: 0.25 });
-  io.observe(v);
-})();
 
 async function handleContactSubmit(e) {
   e.preventDefault();
