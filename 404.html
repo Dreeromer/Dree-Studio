@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada — Dree Studio</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#07070a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@200;300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070a;--white:#ede9e2;--gold:#b8952a;--gray3:#2e2e33;--gray5:#888896;
+  --serif:'Cormorant Garamond',serif;--display:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;
+}
+body{
+  background:var(--bg);color:var(--white);font-family:var(--body);font-weight:200;
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 6vw;position:relative;overflow-x:hidden;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 30% 0%,rgba(184,149,42,.06),transparent 60%);
+}
+.eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.eyebrow-line{width:64px;height:1px;background:var(--gold)}
+.eyebrow span{font-family:var(--display);font-size:.85rem;letter-spacing:.35em;color:var(--gray5)}
+.code{font-family:var(--display);font-size:clamp(6rem,20vw,16rem);line-height:.85;letter-spacing:.02em}
+.code em{font-style:normal;color:var(--gold)}
+.title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.6rem,5vw,3rem);color:var(--gold);margin:1.5rem 0 1.25rem}
+.desc{max-width:46ch;font-size:.95rem;line-height:1.8;color:var(--gray5);margin-bottom:3rem}
+.links{display:flex;flex-wrap:wrap;gap:1rem}
+.links a{
+  font-family:var(--display);font-size:1rem;letter-spacing:.15em;text-decoration:none;
+  color:var(--white);border:1px solid var(--gray3);padding:1rem 1.75rem;transition:border-color .3s,color .3s;
+}
+.links a:hover{border-color:var(--gold);color:var(--gold)}
+.links a.primary{border-color:var(--gold);color:var(--gold)}
+.links a.primary:hover{background:rgba(184,149,42,.08)}
+.foot{margin-top:4rem;font-size:.65rem;letter-spacing:.1em;color:#555560}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span>Error 404</span></div>
+  <div class="code">4<em>0</em>4</div>
+  <p class="title">esta toma no existe</p>
+  <p class="desc">La página que buscas se movió o nunca estuvo aquí. Vuelve a la portada para ver los trabajos, o escríbenos y lo resolvemos.</p>
+  <div class="links">
+    <a class="primary" href="/">Ir a la portada</a>
+    <a href="/#trabajos">Ver trabajos</a>
+    <a href="/ai/">Dree AI</a>
+    <a href="/#contacto">Contacto</a>
+  </div>
+  <div class="foot">© 2026 Dree Studio S.A.C. · Chiclayo · Lima, Perú</div>
+</body>
+</html>

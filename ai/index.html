@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://dree.studio/ai">
 <meta property="og:title" content="Dree AI — UGC Cinematográfico con Inteligencia Artificial">
 <meta property="og:description" content="La próxima era del contenido audiovisual. Avatares hiperrealistas con calidad Dree Studio, escala que solo la IA puede dar.">
-<meta property="og:image" content="andree.jpg">
+<meta property="og:image" content="https://dree.studio/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_PE">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dree AI — UGC con Inteligencia Artificial">
 <meta name="twitter:description" content="UGC cinematográfico generado con IA. La próxima era del contenido audiovisual.">
-<meta name="twitter:image" content="andree.jpg">
+<meta name="twitter:image" content="https://dree.studio/og-image.jpg">
 
 <!-- Schema.org JSON-LD -->
 <script type="application/ld+json">
@@ -44,7 +44,7 @@
   "operatingSystem": "Web",
   "description": "Plataforma SaaS de UGC con inteligencia artificial. Avatares hiperrealistas que promocionan productos de marca en reels cinematográficos, mediante suscripción mensual.",
   "url": "https://dree.studio/ai",
-  "image": "andree.jpg",
+  "image": "https://dree.studio/og-image.jpg",
   "provider": {
     "@type": "Organization",
     "name": "Dree Studio",
@@ -75,7 +75,13 @@
 }
 </script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#07070a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -312,6 +318,14 @@ footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
 .nav-lang a:hover{color:var(--white)}
 .nav-lang .sep{color:var(--gray3)}
 @media(max-width:900px){.nav-lang{display:none}}
+
+/* ACCESIBILIDAD: respeta "reducir movimiento" del sistema */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  .cur,.cur-ring{display:none}
+}
 </style>
 </head>
 <body>
@@ -605,7 +619,7 @@ footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
       <span>Quiénes somos</span>
     </div>
     <h2 class="cred-title">DETRÁS DE DREE AI</h2>
-    <p class="cred-lead">Dree AI es un producto de Dree Studio, productora audiovisual cinematográfica con base en Lima.</p>
+    <p class="cred-lead">Dree AI es un producto de Dree Studio, productora audiovisual cinematográfica con sede en Chiclayo, Lambayeque y operación en Lima.</p>
     <p class="about-body">Hemos producido contenido para el <strong>Estado peruano</strong>, <strong>Mercedes-Benz</strong>, <strong>BCP</strong>, y el <strong>Gobierno Regional de Lambayeque</strong>. Cada frame que entregamos sigue los estándares que aprendimos haciendo cine institucional para marcas que no pueden fallar.</p>
     <p class="cred-close">Esa obsesión por la calidad ahora vive también en nuestra IA.</p>
     <a href="/" class="cred-link">Conoce Dree Studio →</a>
@@ -630,7 +644,7 @@ footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
       <div class="ft-col-title">Contacto</div>
       <ul>
         <li><a href="mailto:dreestudio.contacto@gmail.com">dreestudio.contacto@gmail.com</a></li>
-        <li>Lima, Perú</li>
+        <li>Chiclayo, Lambayeque · Lima</li>
       </ul>
     </div>
     <div class="ft-col">
@@ -653,7 +667,7 @@ footer{border-top:1px solid var(--gray3);padding:4rem 5vw 2rem}
     </div>
   </div>
   <div class="ft-copy-bar">
-    <div class="ft-copy">© 2025 Dree Studio S.A.C. · Lima, Perú · Built with <span class="heart">♥</span> en el norte</div>
+    <div class="ft-copy">© 2026 Dree Studio S.A.C. · Chiclayo · Lima, Perú · Built with <span class="heart">♥</span> en el norte</div>
   </div>
 </footer>
 
