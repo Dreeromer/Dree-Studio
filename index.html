@@ -125,13 +125,18 @@ html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight:300;overflow-x:hidden;cursor:none}
 
 /* LOADER */
-#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s ease}
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 1s ease}
 #loader.done{opacity:0;pointer-events:none}
-.loader-logo{font-family:var(--display);font-size:5rem;letter-spacing:0.2em;color:transparent;-webkit-text-stroke:1px var(--gray3);animation:revealStroke 2s ease forwards}
-@keyframes revealStroke{0%{-webkit-text-stroke-color:var(--gray3)}100%{-webkit-text-stroke-color:var(--gold)}}
+/* Al entrar a la página el logo no se apaga de golpe: crece un punto, se
+   desenfoca y se va, como si se esfumara. */
+.loader-media{width:min(78vw,620px);aspect-ratio:16/9;transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter 1.1s ease,opacity 1.1s ease}
+#loader.done .loader-media{transform:scale(1.07);filter:blur(7px);opacity:0}
+.loader-video,.loader-still{width:100%;height:100%;object-fit:contain;display:block;
+  -webkit-mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%);
+  mask-image:radial-gradient(ellipse 76% 76% at 50% 50%,#000 52%,transparent 86%)}
+.loader-still{display:none}
 .loader-bar-wrap{width:200px;height:1px;background:var(--gray3);overflow:hidden}
-.loader-bar{height:100%;background:var(--gold);width:0;animation:loadBar 2.2s ease forwards}
-@keyframes loadBar{0%{width:0}100%{width:100%}}
+.loader-bar{height:100%;background:var(--gold);width:0;transition:width .25s linear}
 .loader-pct{font-size:0.65rem;letter-spacing:0.4em;color:var(--gray4);font-family:var(--display)}
 
 /* CURSOR */
@@ -144,8 +149,9 @@ body{background:var(--bg);color:var(--white);font-family:var(--body);font-weight
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2.5rem 5vw;mix-blend-mode:normal;transition:padding .4s,background .4s}
 nav.scrolled{padding:1.5rem 5vw;background:rgba(7,7,10,0.92);backdrop-filter:blur(20px)}
-.nav-logo{font-family:var(--display);font-size:1.6rem;letter-spacing:0.2em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.3rem}
-.nav-logo .dot{color:var(--gold);font-size:2rem;line-height:0.5}
+.nav-logo{display:block;text-decoration:none;line-height:0}
+.nav-logo img{height:48px;width:auto;display:block}
+@media(max-width:768px){.nav-logo img{height:34px}}
 .nav-links{display:flex;gap:3rem;list-style:none}
 .nav-links a{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gray5);text-decoration:none;transition:color .3s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
@@ -432,8 +438,14 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 <body>
 
 <div id="loader">
-  <div class="loader-logo">DREE</div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-media">
+    <video id="loaderVideo" class="loader-video" muted playsinline preload="auto"
+           poster="logo-sting-poster.jpg" aria-label="Logotipo de Dree Studio">
+      <source src="logo-sting.mp4" type="video/mp4">
+    </video>
+    <img class="loader-still" src="logo-sting-poster.jpg" alt="Dree Studio" width="1280" height="720">
+  </div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
   <div class="loader-pct" id="loaderPct">0%</div>
 </div>
 
@@ -442,7 +454,9 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">DREE<span class="dot">·</span>STUDIO</a>
+  <a href="#" class="nav-logo" aria-label="Dree Studio — ir al inicio">
+    <img src="logo-dree.svg" alt="Dree Studio" width="757" height="436">
+  </a>
   <ul class="nav-links">
     <li><a href="#trabajos">Trabajos</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
@@ -911,11 +925,11 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 <section class="signoff" id="cierre">
   <div class="signoff-rule"></div>
   <div class="signoff-media">
-    <video id="logoVideo" class="signoff-video" muted loop playsinline preload="none"
-           poster="logo-anim-poster.jpg" aria-label="Logotipo animado de Dree Studio">
-      <source src="logo-anim.mp4" type="video/mp4">
+    <video id="logoVideo" class="signoff-video" muted playsinline preload="none"
+           poster="logo-sting-poster.jpg" aria-label="Logotipo animado de Dree Studio">
+      <source src="logo-sting.mp4" type="video/mp4">
     </video>
-    <img class="signoff-still" src="logo-anim-poster.jpg" alt="Logotipo de Dree Studio"
+    <img class="signoff-still" src="logo-sting-poster.jpg" alt="Logotipo de Dree Studio"
          width="1280" height="720" loading="lazy" decoding="async">
   </div>
   <p class="signoff-line">Producción cinematográfica · Chiclayo · Lima · Perú</p>
@@ -967,15 +981,65 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
 </div>
 
 <script>
-// LOADER
-let pct = 0;
-const pctEl = document.getElementById('loaderPct');
-const loaderInterval = setInterval(() => {
-  pct += Math.random() * 15;
-  if(pct >= 100){ pct = 100; clearInterval(loaderInterval); }
-  pctEl.textContent = Math.floor(pct) + '%';
-  if(pct === 100) setTimeout(() => document.getElementById('loader').classList.add('done'), 300);
-}, 120);
+// LOADER: el sting se dibuja mientras la página carga de verdad. Se entra
+// cuando se cumplen las dos cosas: la animación terminó y la página está lista.
+(function () {
+  const loader = document.getElementById('loader');
+  const video  = document.getElementById('loaderVideo');
+  const pctEl  = document.getElementById('loaderPct');
+  const barEl  = document.getElementById('loaderBar');
+  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let cargada = document.readyState === 'complete';
+  let stingListo = false;
+  let salido = false;
+
+  window.addEventListener('load', function () { cargada = true; intentarSalir(); });
+
+  function pintar(p) {
+    const v = Math.max(0, Math.min(100, Math.round(p * 100)));
+    pctEl.textContent = v + '%';
+    barEl.style.width = v + '%';
+  }
+
+  function salir() {
+    if (salido) return;
+    salido = true;
+    clearTimeout(rescate);
+    pintar(1);
+    loader.classList.add('done');
+    setTimeout(function () { loader.style.display = 'none'; }, 1200);
+  }
+
+  function intentarSalir() {
+    if (cargada && stingListo) salir();
+  }
+
+  // Red 3G, autoplay bloqueado, formato no soportado: pase lo que pase nadie
+  // se queda atrapado en la pantalla de carga.
+  const rescate = setTimeout(salir, 7000);
+
+  if (quieto || !video) {
+    pintar(1);
+    stingListo = true;
+    setTimeout(intentarSalir, 400);
+    return;
+  }
+
+  video.addEventListener('timeupdate', function () {
+    if (!video.duration) return;
+    const p = video.currentTime / video.duration;
+    // Sin la página lista no se llega al 100%: el número no debe mentir
+    pintar(cargada ? p : Math.min(p, 0.95));
+  });
+  video.addEventListener('ended', function () { stingListo = true; intentarSalir(); });
+  video.addEventListener('error', function () { stingListo = true; intentarSalir(); });
+
+  const arranque = video.play();
+  if (arranque && arranque.catch) {
+    arranque.catch(function () { stingListo = true; intentarSalir(); });
+  }
+})();
 
 // CURSOR
 const cur = document.getElementById('cur');
@@ -1125,8 +1189,7 @@ async function handleCotizSubmit(e) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const io = new IntersectionObserver(function (entradas) {
     entradas.forEach(function (e) {
-      if (e.isIntersecting) { v.play().catch(function () {}); }
-      else { v.pause(); }
+      if (e.isIntersecting) { v.play().catch(function () {}); io.unobserve(v); }
     });
   }, { threshold: 0.25 });
   io.observe(v);
