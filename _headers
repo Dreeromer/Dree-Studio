@@ -1,0 +1,6 @@
+# Sin este tipo MIME el iPhone no ofrece "Añadir a contactos" al abrir la vCard.
+# No se pone Content-Disposition: attachment a proposito — eso la mandaria a
+# Archivos en vez de abrirla en Contactos.
+/*.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Cache-Control: public, max-age=3600
