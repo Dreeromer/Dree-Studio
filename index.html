@@ -74,7 +74,6 @@
   ],
   "email": "dreestudio.contacto@gmail.com",
   "sameAs": [
-    "https://dreerom.myportfolio.com",
     "https://www.linkedin.com/in/andreerome/"
   ]
 }
@@ -334,7 +333,9 @@ textarea.cf-input{resize:none;min-height:90px}
 .cf-btn:hover{border-color:var(--gold);color:var(--gold)}
 
 /* FOOTER */
-footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+/* El pie lleva mas aire abajo que arriba: el boton flotante de WhatsApp
+   vive fijo en la esquina y sin ese margen tapaba el ultimo enlace. */
+footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw 6rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
 .ft-logo{font-family:var(--display);font-size:1.4rem;letter-spacing:0.2em;color:var(--gray4)}
 .ft-logo span{color:var(--gold)}
 .ft-copy{font-size:0.65rem;letter-spacing:0.1em;color:var(--gray4);text-align:center}
@@ -823,7 +824,7 @@ footer{border-top:1px solid var(--gray3);padding:2.5rem 5vw;display:grid;grid-te
   <div class="ft-copy">© 2026 Dree Studio S.A.C. · Chiclayo · Lima, Perú</div>
   <div class="ft-links">
     <a href="https://www.linkedin.com/in/andreerome/" target="_blank">LinkedIn</a>
-    <a href="https://dreerom.myportfolio.com/" target="_blank">Portfolio</a>
+    <a href="/tarjeta">Tarjeta</a>
   </div>
 </footer>
 
